@@ -1,12 +1,21 @@
 #ifndef PUSH_H
 #define PUSH_H
 
+#include <unistd.h>
+#include <stdio.h>
+#include <fcntl.h>
+#include <string.h>
+#include <stdlib.h>
+
 
 /*	disorder.c */
 float ft_disorder(int*, int);
 
 /* bubble.c */
 int *ft_argv_to_array(int argc, char **argv, int *size);
+
+/* flag.c */
+int ft_flag(char *str);
 
 typedef enum e_flag
 {
@@ -16,6 +25,13 @@ typedef enum e_flag
     SIMPLE,
     BENCH
 }   t_flag;
+
+#define ADA "--adaptive"
+#define COM "--complex"
+#define MED "--medium"
+#define SIM "--simple"
+#define BEN "--abench"
+
 /*
 --adaptive = 1
 --complex = 2

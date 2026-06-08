@@ -18,13 +18,16 @@ argv[4] = numebr3
 argv[5] = numebr4
 argv[6] = NULL;
 */
+#include "push.h" 
 
 int	main(int argc, char **argv)
 {
 	int		i;
 	int		*array;
 	int		size;
-	float	dis;
+	float		dis;
+	int 		flag;
+
 
 	if (argc < 2)
 	{
@@ -33,7 +36,11 @@ int	main(int argc, char **argv)
 	}
 	i = 1;
 	size = 0;
+	flag = 0;
+	flag = ft_flag(argv[1]);
 
+	return(0);
+	
 	array = ft_argv_to_array(argc, argv, &size);
 	dis = ft_disorder(array, size);
 	printf("%f", dis);
