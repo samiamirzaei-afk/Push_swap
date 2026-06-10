@@ -4,7 +4,7 @@
 /*
 --adaptive = 1
 --complex = 2
---medium        = 3
+--medium  = 3
 --simple = 4
 --bench = 5
 */
@@ -26,20 +26,18 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (0);
 }
 
-int ft_flag(char *str)
+int ft_flag(char **argv, short *flags)
 {
 	int i;
+	int k;
 	short result;
 
-	i = 0;
+	i = 1;
 
 
-	while(1)
+	while(argv[i] != NULL)
 	{
-		result = ft_strncmp(str, ADA);
-		if(result == 0)
-			return(ADAPTIVE);
-	
+			ft_found_flag(argv[i])
 	}
 
 

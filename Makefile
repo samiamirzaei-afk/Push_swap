@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra
 
 SRC = main.c\
 	  disorder.c\
-	  bubble.c\
+	  argv_to_array.c\
 	  flag.c
 all:
 	$(CC) $(CFLAGS) $(SRC) -o $(NAME)

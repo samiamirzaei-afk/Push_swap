@@ -6,7 +6,7 @@
 /*   By: ammirzae <ammirzae@student.42vienna.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 14:24:16 by ammirzae          #+#    #+#             */
-/*   Updated: 2026/06/07 15:13:11 by ammirzae         ###   ########.fr       */
+/*   Updated: 2026/06/10 11:45:04 by ammirzae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 	int		*array;
 	int		size;
 	float		dis;
-	int 		flag;
+	short	*flags[2];
 
 
 	if (argc < 2)
@@ -37,7 +37,7 @@ int	main(int argc, char **argv)
 	i = 1;
 	size = 0;
 	flag = 0;
-	flag = ft_flag(argv[1]);
+	ft_flag(argv, &flags);
 
 	return(0);
 	
@@ -45,4 +45,4 @@ int	main(int argc, char **argv)
 	dis = ft_disorder(array, size);
 	printf("%f", dis);
 
-}
+
