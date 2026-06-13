@@ -9,36 +9,71 @@
 --bench = 5
 */
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strcmp(char *s1, char *s2)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	if (n == 0)
-		return (0);
-	while (((unsigned char)s1[i] != '\0' || (unsigned char)s2[i] != '\0')
-		&& i < n)
+	while (s1[i] != '\0' || s2[i] != '\0')
 	{
-		if ((unsigned char)s1[i] != (unsigned char)s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
 		i++;
 	}
 	return (0);
+}
+
+
+int ft_version_finder(char *str)
+{
+	if(ft_strcmp(str, ADA) == 0)
+			return(ADAPTIVE);
+	if(ft_strcmp(str, COM) == 0)
+			return(COMPLEX);
+	if(ft_strcmp(str, MED) == 0)
+			return(MEDIUM);
+	if(ft_strcmp(str, SIM) == 0)
+			return(SIMPLE);
+	if(ft_strcmp(str, BEN) == 0)
+			return(BENCH);
+	return(-1);
+}
+
+int ft_found_flag(char *str)
+{
+	int i;
+	
+	i = 0;
+
+	while(str[i] == '-')
+			i++;
+	if(i == 2)
+		return(ft_version_finder(str));
+	return(0);
+
 }
 
 int ft_flag(char **argv, short *flags)
 {
 	int i;
 	int k;
-	short result;
 
 	i = 1;
+	k = 0;
 
 
-	while(argv[i] != NULL)
+	while(argv[i] != NULL || k < 2)
 	{
-			ft_found_flag(argv[i])
+			flags[k] = ft_found_flag(argv[i]);
+			if((flags[k]) == -1)
+				return(-1);
+			if((flags[k]) > 0)
+					k++;
+			i++;
 	}
+	if(flags[1] > 0 && flags[1] > 0)
+			return(1);
+	return(0);
 
 
 }

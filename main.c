@@ -26,7 +26,8 @@ int	main(int argc, char **argv)
 	int		*array;
 	int		size;
 	float		dis;
-	short	*flags[2];
+	short	flags[2];
+	
 
 
 	if (argc < 2)
@@ -36,8 +37,9 @@ int	main(int argc, char **argv)
 	}
 	i = 1;
 	size = 0;
-	flag = 0;
-	ft_flag(argv, &flags);
+	if((ft_flag(argv, flags)) <= 0)
+		return(write(1,"Error\n", 6), 1);
+	printf("flag1:%d flag2:%d\n", flags[0], flags[1]);		
 
 	return(0);
 	
@@ -45,4 +47,4 @@ int	main(int argc, char **argv)
 	dis = ft_disorder(array, size);
 	printf("%f", dis);
 
-
+}

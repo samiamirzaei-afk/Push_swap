@@ -15,7 +15,7 @@ float ft_disorder(int*, int);
 int *ft_argv_to_array(int argc, char **argv, int *size);
 
 /* flag.c */
-int ft_flag(char *str);
+int ft_flag(char **argv, short *flags);
 
 typedef enum e_flag
 {
@@ -30,7 +30,7 @@ typedef enum e_flag
 #define COM "--complex"
 #define MED "--medium"
 #define SIM "--simple"
-#define BEN "--abench"
+#define BEN "--bench"
 
 /*
 --adaptive = 1
