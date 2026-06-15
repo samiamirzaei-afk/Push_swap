@@ -11,11 +11,19 @@
 /*	disorder.c */
 float ft_disorder(int*, int);
 
-/* bubble.c */
+/* argv_to_array.c */
 int *ft_argv_to_array(int argc, char **argv, int *size);
 
 /* flag.c */
+int ft_version_finder(char *str);
+int ft_found_flag(char *str);
 int ft_flag(char **argv, short *flags);
+
+/* utils.c */
+int	ft_strcmp(char *s1, char *s2);
+int ft_isalpha(int number);
+int	ft_isdigit_plus(int num);
+
 
 typedef enum e_flag
 {

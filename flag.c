@@ -1,4 +1,3 @@
-
 #include "push.h"
 
 /*
@@ -9,19 +8,6 @@
 --bench = 5
 */
 
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;
-
-	i = 0;
-	while (s1[i] != '\0' || s2[i] != '\0')
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
-	}
-	return (0);
-}
 
 
 int ft_version_finder(char *str)
@@ -44,11 +30,14 @@ int ft_found_flag(char *str)
 	int i;
 	
 	i = 0;
-
+	if(!(ft_isdigit_plus(str[i])))
+			return(-1);
 	while(str[i] == '-')
 			i++;
-	if(i == 2)
+	if(i == 2 && ft_isalpha(str[i + 1]))
 		return(ft_version_finder(str));
+	if(ft_isalpha(str[i]))
+			return(-1);
 	return(0);
 
 }
@@ -62,13 +51,15 @@ int ft_flag(char **argv, short *flags)
 	k = 0;
 
 
-	while(argv[i] != NULL && k < FLAG_SIZE)
+	while(argv[i] != NULL)
 	{
 			flags[k] = ft_found_flag(argv[i]);
 			if((flags[k]) == -1)
 				return(-1);
 			if((flags[k]) > 0)
 					k++;
+			if(k > FLAG_SIZE)
+					return(-1);
 			i++;
 	}
 	return(0);

@@ -5,6 +5,7 @@ CFLAGS = -Wall -Wextra
 SRC = main.c\
 	  disorder.c\
 	  argv_to_array.c\
-	  flag.c
+	  flag.c\
+	  utils.c
 all:
 	$(CC) $(CFLAGS) $(SRC) -g -o $(NAME)

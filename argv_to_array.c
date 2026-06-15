@@ -4,10 +4,11 @@ int	*ft_argv_to_array(int argc, char **argv, int *size)
 {
 	int i;
 	int k;
-	int j;
 	int *result;
-	short flag_index;
+	short flag_index[FLAG_SIZE];
 
+	k = 0;
+	i = 0;
 	while(argv[i] != NULL && k < FLAG_SIZE)
 	{
 			if(ft_found_flag(argv[i]))
