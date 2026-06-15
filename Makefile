@@ -7,4 +7,4 @@ SRC = main.c\
 	  argv_to_array.c\
 	  flag.c
 all:
-	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+	$(CC) $(CFLAGS) $(SRC) -g -o $(NAME)

@@ -22,11 +22,11 @@ argv[6] = NULL;
 
 int	main(int argc, char **argv)
 {
-	int		i;
+//	int		i;
 	int		*array;
 	int		size;
 	float		dis;
-	short	flags[2];
+	short	flags[FLAG_SIZE];
 	
 
 
@@ -35,13 +35,12 @@ int	main(int argc, char **argv)
 		printf("please provide 2 or more numbers [...]\n");
 		return (1);
 	}
-	i = 1;
+//	i = 1;
 	size = 0;
-	if((ft_flag(argv, flags)) <= 0)
+	if((ft_flag(argv, flags)) == -1)
 		return(write(1,"Error\n", 6), 1);
 	printf("flag1:%d flag2:%d\n", flags[0], flags[1]);		
 
-	return(0);
 	
 	array = ft_argv_to_array(argc, argv, &size);
 	dis = ft_disorder(array, size);

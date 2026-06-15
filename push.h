@@ -32,6 +32,7 @@ typedef enum e_flag
 #define SIM "--simple"
 #define BEN "--bench"
 
+#define FLAG_SIZE 2
 /*
 --adaptive = 1
 --complex = 2

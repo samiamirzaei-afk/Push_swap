@@ -62,7 +62,7 @@ int ft_flag(char **argv, short *flags)
 	k = 0;
 
 
-	while(argv[i] != NULL || k < 2)
+	while(argv[i] != NULL && k < FLAG_SIZE)
 	{
 			flags[k] = ft_found_flag(argv[i]);
 			if((flags[k]) == -1)
@@ -71,9 +71,5 @@ int ft_flag(char **argv, short *flags)
 					k++;
 			i++;
 	}
-	if(flags[1] > 0 && flags[1] > 0)
-			return(1);
 	return(0);
-
-
 }

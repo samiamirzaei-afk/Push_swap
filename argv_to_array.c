@@ -1,18 +1,23 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <fcntl.h>
-#include <string.h>
-#include <stdlib.h>
-
 #include "push.h"
 
 int	*ft_argv_to_array(int argc, char **argv, int *size)
 {
 	int i;
 	int k;
+	int j;
 	int *result;
+	short flag_index;
 
-	result = malloc((argc - 3) *sizeof(int));
+	while(argv[i] != NULL && k < FLAG_SIZE)
+	{
+			if(ft_found_flag(argv[i]))
+				flag_index[k] = i;
+					k++;
+			i++;
+	}
+	i = 0;
+
+	result = malloc((argc - (2 + k)) *sizeof(int));
 	if(!result)
 		return(NULL);
 	i = 2;
@@ -24,15 +29,15 @@ int	*ft_argv_to_array(int argc, char **argv, int *size)
 		k++;
 	}
 	*size = k;	
-//	printf("size: '%d'\n", k);
+	printf("size: '%d'\n", k);
 	k = 0;
-/*
-	while(k < argc - 1)
+///*
+	while(k < argc - 2)
 	{
 		printf("result[%d]:%d\n", k, result[k]);
 		k++;
 	}
-*/
+//*/
 	return(result);
 
 }
