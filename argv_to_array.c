@@ -5,38 +5,46 @@ int	*ft_argv_to_array(int argc, char **argv, int *size)
 	int i;
 	int k;
 	int *result;
-	short flag_index[FLAG_SIZE];
 
 	k = 0;
 	i = 0;
-	while(argv[i] != NULL && k < FLAG_SIZE)
+	while(argv[i] != NULL)
 	{
-		if(ft_found_flag(argv[i]))
-			flag_index[k] = i;
-				k++;
+		if(!ft_isdigit(argv[i][0]))
+			k++;
 		i++;
 	}
 	i = 0;
-
+	
+	printf("size: '%d'\n", (argc - (k)));
 	result = malloc((argc - (2 + k)) *sizeof(int));
 	if(!result)
 		return(NULL);
-	i = 2;
+	*size = k;
+	i = 0;
 	k = 0;
+	printf("argc: %d\n", argc);
 	while (i < argc)
 	{
+		while(!ft_isdigit(argv[i][0]))
+		{
+//			printf("skipping argv[%d]= %s\n", i, argv[i]);
+			i++;
+		}
+		printf("i: %d\n", i);
+		if(argv[i] == NULL)
+			break;
 		result[k] = atoi(argv[i]);
+		printf("adding argv[%d] '%s' to result[%d]= %d\n", i, argv[i],k , result[k]);
 		i++;
 		k++;
 	}
-	*size = k;	
-	printf("size: '%d'\n", k);
-	k = 0;
+	i = 0;
 ///*
-	while(k < argc - 2)
+	while(i < k)
 	{
-		printf("result[%d]:%d\n", k, result[k]);
-		k++;
+		printf("result[%d]:%d\n", i, result[i]);
+		i++;
 	}
 //*/
 	return(result);

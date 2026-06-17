@@ -21,6 +21,12 @@ int	ft_isdigit_plus(int num)
 	return (0);
 }
 
+int	ft_isdigit(int num)
+{
+	if ((num >= '0' && num <= '9'))
+		return (1);
+	return (0);
+}
 int	ft_isalpha(int number)
 {
 	if (number >= 'A' && number <= 'z')
