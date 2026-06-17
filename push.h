@@ -34,17 +34,17 @@ typedef enum e_flag
     BENCH
 }   t_flag;
 
-#define ADA "--adaptive"
-#define COM "--complex"
-#define MED "--medium"
-#define SIM "--simple"
-#define BEN "--bench"
-
+#define ADA "adaptive"
+#define COM "complex"
+#define MED "medium"
+#define SIM "simple"
+#define BEN "bench"
+#define FLAG_SYMBOL '+'
 #define FLAG_SIZE 2
 /*
 --adaptive = 1
 --complex = 2
---medium	= 3
+--mediu	= 3
 --simple = 4
 --bench = 5
 */

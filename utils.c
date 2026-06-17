@@ -16,7 +16,7 @@ int	ft_strcmp(char *s1, char *s2)
 
 int	ft_isdigit_plus(int num)
 {
-	if ((num >= '0' && num <= '9') || num == '-')
+	if ((num >= '0' && num <= '9') || num == FLAG_SYMBOL)
 		return (1);
 	return (0);
 }
