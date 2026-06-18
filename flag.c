@@ -67,12 +67,13 @@ int ft_found_flag(char *str)
 	i = 0;
 	if(!(ft_isdigit_plus(str[i])))
 			return(-1);
-	while(str[i] == FLAG_SYMBOL)
+	while(str[i] == FLAG_SYMBOL && i != 2)
 			i++;
 	if(i == 2 && ft_isalpha(str[i + 1]))
 		return(ft_version_finder(&str[i]));
 	if(!ft_isdigit(str[i]))
 			return(-1);
+	printf("passed str: %s\n", str);
 	return(0);
 
 }

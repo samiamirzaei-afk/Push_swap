@@ -26,7 +26,7 @@ int	*ft_argv_to_array(int argc, char **argv, int *size)
 	printf("argc: %d\n", argc);
 	while (i < argc)
 	{
-		while(!ft_isdigit(argv[i][0]))
+		while(argv[i] && !ft_isdigit(argv[i][0]))
 		{
 //			printf("skipping argv[%d]= %s\n", i, argv[i]);
 			i++;
