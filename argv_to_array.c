@@ -17,10 +17,10 @@ int	*ft_argv_to_array(int argc, char **argv, int *size)
 	i = 0;
 	
 	printf("size: '%d'\n", (argc - (k)));
-	result = malloc((argc - (2 + k)) *sizeof(int));
+	result = malloc((argc - (k)) *sizeof(int));
 	if(!result)
 		return(NULL);
-	*size = k;
+	*size = (argc -k);
 	i = 0;
 	k = 0;
 //	printf("argc: %d\n", argc);

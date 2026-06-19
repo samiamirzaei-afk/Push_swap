@@ -1,3 +1,5 @@
+#include "push.h"
+
 /*
 function compute_disorder(stack a):
 mistakes = 0
@@ -15,10 +17,11 @@ float ft_disorder(int *array, int size)
 	float mistake;
 	float size_f;
 	int i;
+
 	i = 0;
 	mistake = 0;
 	size_f = size;
-	while(i < size - 1)
+	while(i <= size - 1)
 	{
 		if(array[i] > array[i+1])
 				mistake += 1;

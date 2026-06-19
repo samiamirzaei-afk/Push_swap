@@ -43,7 +43,7 @@ typedef enum e_flag
 #define MED "medium"
 #define SIM "simple"
 #define BEN "bench"
-#define FLAG_SYMBOL '-'
+#define FLAG_SYMBOL '+'
 #define FLAG_SIZE 2
 /*
 --adaptive = 1

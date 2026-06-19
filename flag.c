@@ -71,6 +71,8 @@ int ft_found_flag(char *str)
 			i++;
 	if(i == 2 && ft_isalpha(str[i + 1]))
 		return(ft_version_finder(&str[i]));
+	if(i >= 2)
+		return(-1);
 	if(!ft_isdigit(str[i]))
 			return(-1);
 	printf("passed str: %s\n", str);
