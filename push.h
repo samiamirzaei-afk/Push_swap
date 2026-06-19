@@ -22,9 +22,12 @@ int ft_flag(char **argv, short *flags);
 /* utils.c */
 int	ft_strcmp(char *s1, char *s2);
 int	ft_isdigit_plus(int num);
+int	ft_isdigit_str(char *str);
 int	ft_isdigit(int num);
 int	ft_isalpha(int number);
 
+/* ft_atoi */
+int	ft_atoi(char *str);
 
 typedef enum e_flag
 {

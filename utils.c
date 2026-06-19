@@ -20,6 +20,29 @@ int	ft_isdigit_plus(int num)
 		return (1);
 	return (0);
 }
+//-
+int	ft_isdigit_str(char *str)
+{
+	int i;
+	int sign;
+
+	sign = 0;
+	i = 0;
+	if (str[i] && (str[i] == '-' || str[i] == '+'))
+	{
+		sign = 1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+		i++;
+	if(str[i] == '\0')
+	{
+		if(i == 1 && sign == 1)
+			return(0);
+		return (1);
+	}
+	return (0);
+}
 
 int	ft_isdigit(int num)
 {

@@ -6,6 +6,7 @@ SRC = main.c\
 	  disorder.c\
 	  argv_to_array.c\
 	  flag.c\
-	  utils.c
+	  utils.c\
+	  ft_atoi.c
 all:
 	$(CC) $(CFLAGS) $(SRC) -g -o $(NAME)
