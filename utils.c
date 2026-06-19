@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ammirzae <ammirzae@student.42vienna.c      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/19 10:51:04 by ammirzae          #+#    #+#             */
+/*   Updated: 2026/06/19 12:46:50 by ammirzae         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push.h"
 
 int	ft_strcmp(char *s1, char *s2)
@@ -16,15 +28,18 @@ int	ft_strcmp(char *s1, char *s2)
 
 int	ft_isdigit_plus(int num)
 {
-	if ((num >= '0' && num <= '9') || num == FLAG_SYMBOL)
+	short result;
+	
+	result = ft_issymbol(num);
+	if ((num >= '0' && num <= '9') || result == 1)
 		return (1);
 	return (0);
 }
 //-
 int	ft_isdigit_str(char *str)
 {
-	int i;
-	int sign;
+	int	i;
+	int	sign;
 
 	sign = 0;
 	i = 0;
@@ -35,10 +50,10 @@ int	ft_isdigit_str(char *str)
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 		i++;
-	if(str[i] == '\0')
+	if (str[i] == '\0')
 	{
-		if(i == 1 && sign == 1)
-			return(0);
+		if (i == 1 && sign == 1)
+			return (0);
 		return (1);
 	}
 	return (0);

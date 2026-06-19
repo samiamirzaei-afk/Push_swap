@@ -26,6 +26,9 @@ int	ft_isdigit_str(char *str);
 int	ft_isdigit(int num);
 int	ft_isalpha(int number);
 
+/* utils2.c */
+short ft_issymbol(int num);
+
 /* ft_atoi */
 int	ft_atoi(char *str);
 
@@ -43,7 +46,7 @@ typedef enum e_flag
 #define MED "medium"
 #define SIM "simple"
 #define BEN "bench"
-#define FLAG_SYMBOL '+'
+#define FLAG_SYMBOL '-'
 #define FLAG_SIZE 2
 /*
 --adaptive = 1
