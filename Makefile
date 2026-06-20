@@ -8,6 +8,7 @@ SRC = main.c\
 	  flag.c\
 	  utils.c\
 	  utils2.c\
-	  ft_atoi.c
+	  ft_atoi.c\
+	  error_check.c
 all:
 	$(CC) $(CFLAGS) $(SRC) -g -o $(NAME)

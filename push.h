@@ -32,6 +32,10 @@ short ft_issymbol(int num);
 /* ft_atoi */
 int	ft_atoi(char *str);
 
+
+/* error_check */
+short	ft_array_check(int *array, int size);
+
 typedef enum e_flag
 {
     ADAPTIVE = 1,

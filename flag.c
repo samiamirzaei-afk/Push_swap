@@ -73,9 +73,9 @@ int ft_found_flag(char *str)
 		return(ft_version_finder(&str[i]));
 	if(i == 2)
 		return(-1);
-	if(!ft_isdigit(str[i]))
+	if(!ft_isdigit_str(str))
 			return(-1);
-	printf("passed str: %s\n", str);
+//	printf("passed str: %s\n", str);
 	return(0);
 
 }

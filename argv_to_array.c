@@ -20,7 +20,7 @@ int	*ft_argv_to_array(int argc, char **argv, int *size)
 	result = malloc((argc - (k)) *sizeof(int));
 	if(!result)
 		return(NULL);
-	*size = (argc -k);
+	*size = (argc - k);
 	i = 0;
 	k = 0;
 //	printf("argc: %d\n", argc);
@@ -47,6 +47,7 @@ int	*ft_argv_to_array(int argc, char **argv, int *size)
 		i++;
 	}
 //*/
+	
 	return(result);
 
 }

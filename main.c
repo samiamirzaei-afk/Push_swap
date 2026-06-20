@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 	int		*array;
 	int		size;
 	float		dis;
-	short	flags[FLAG_SIZE];
+	short	flags[FLAG_SIZE + 1];
 	
 
 
@@ -35,15 +35,17 @@ int	main(int argc, char **argv)
 		printf("please provide 2 or more numbers [...]\n");
 		return (1);
 	}
-//	i = 1;
 	size = 0;
 	if((ft_flag(argv, flags)) == -1)
 		return(write(1,"Error\n", 6), 1);
-	printf("flag1:%d flag2:%d\n", flags[0], flags[1]);		
-
-	
+/*	for(i = 0; i <= FLAG_SIZE; i++)
+		printf("flag%d:[%d]\n", i, flags[i]);		
+*/
 	array = ft_argv_to_array(argc, argv, &size);
-	dis = ft_disorder(array, size);
-	printf("%f", dis);
+	if(ft_array_check(array, size) == -1)
+		return(write(1,"Error2\n", 7), 1);
 
+	dis = ft_disorder(array, size);
+	printf("disorder: %f\n", dis);
+	return(0);
 }
