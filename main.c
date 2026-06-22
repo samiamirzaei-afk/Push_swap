@@ -6,7 +6,7 @@
 /*   By: ammirzae <ammirzae@student.42vienna.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 14:24:16 by ammirzae          #+#    #+#             */
-/*   Updated: 2026/06/10 11:45:04 by ammirzae         ###   ########.fr       */
+/*   Updated: 2026/06/22 11:10:09 by ammirzae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -22,7 +22,7 @@ argv[6] = NULL;
 
 int	main(int argc, char **argv)
 {
-//	int		i;
+	int		i;
 	int		*array;
 	int		size;
 	float		dis;
@@ -38,9 +38,9 @@ int	main(int argc, char **argv)
 	size = 0;
 	if((ft_flag(argv, flags)) == -1)
 		return(write(1,"Error\n", 6), 1);
-/*	for(i = 0; i <= FLAG_SIZE; i++)
+	for(i = 0; i <= FLAG_SIZE; i++)
 		printf("flag%d:[%d]\n", i, flags[i]);		
-*/
+
 	array = ft_argv_to_array(argc, argv, &size);
 	if(ft_array_check(array, size) == -1)
 		return(write(1,"Error2\n", 7), 1);
