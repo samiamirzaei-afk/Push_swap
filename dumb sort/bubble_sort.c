@@ -214,9 +214,6 @@ void	ft_pb(int *array_a, int *array_b, int *size_a, int *size_b, char *command)
 	(*size_a)--;
 	(*size_b)++;
 	
-//	if(small_p <= ((*size_a + *size_b)/2))
-//		ft_rra(array_a, (*size_a + *size_b), "-");
-//	else
 	ft_ra(array_a, (*size_a + *size_b), "-");
 	i = *size_b;
 	while(0 < i)
@@ -243,7 +240,6 @@ void ft_swap(int *array)
 void	ft_bubble(int *array_a, int *array_b, int size_a)
 {
 	int smallest;
-	int small_p;
 	int i;
 	int size_b;
 	int full_size;
@@ -252,38 +248,23 @@ void	ft_bubble(int *array_a, int *array_b, int size_a)
 	size_b = 0;
 
 	i = 0;
-//	printf("full: %d\n", full_size);
-
 
 	while(1)
 	{
 		smallest = ft_small(array_a, size_a);
-		
 		if((size_a >= 2) && array_a[0] > array_a[1])
-				ft_swap(array_a);
+			ft_swap(array_a);
 		if(array_a[0] == smallest)
-		{
 			ft_pb(array_a, array_b, &size_a, &size_b, "pb\n");
-			smallest = ft_small(array_a, size_a);
-		}
 		if(size_a == 0)
-				break ;
-
+			break ;
+		smallest = ft_small(array_a, size_a);
 		if ((array_a[0] != smallest))
-				ft_ra(array_a, (size_a + size_b), "-");
-/*		if ((array_a[0] != smallest))
-		{
-			if(small_p <= ((size_a + size_b)/2))
-				ft_rra(array_a, (size_a + size_b), "-");
-			else
-				ft_ra(array_a, (size_a + size_b), "-");
-		}
-*/
+			ft_ra(array_a, size_a, "ra\n");
 	}
 	while(size_b)
-	{
 		ft_pb(array_b, array_a, &size_b, &size_a, "pa\n");
-	}
+
 	return ;
 }
 
@@ -304,8 +285,12 @@ int	main(int argc, char **argv)
 	k = 0;
 
 	size = argc - 1;
-	array_a = malloc(size * sizeof(int));
-	array_b = malloc(size * sizeof(int));
+	array_a = malloc((size + 1) * sizeof(int));
+	if(!array_a)
+		return(0);
+	array_b = malloc((size + 1) * sizeof(int));
+	if(!array_b)
+		return(free(array_a), 0);
 	while(argv[i] != NULL)
 	{
 		array_a[k] = atoi(argv[i]);
@@ -325,5 +310,7 @@ int	main(int argc, char **argv)
 
 	ft_bubble(array_a, array_b, size);
 //	ft_show_two(array_a, array_b, size);
+	free(array_a);
+	free(array_b);
 
 }
