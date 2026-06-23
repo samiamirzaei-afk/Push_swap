@@ -162,6 +162,7 @@ void	ft_show_two(int *arrayA, int *arrayB, int size)
 		printf("arrayB[%d]=%d\n", i, arrayB[i]);
 		i++;
 	}
+	printf("\n");
 }
 
 void	ft_show_one(int *arraya, int size)
@@ -199,17 +200,34 @@ int ft_small(int *array, int size)
 }
 
 //	5 3 2 7 9 6 4 1
-void	ft_pb(int *arrayA, int *arrayB, int sizeA, int sizeB)
+void	ft_pb(int *array_a, int *array_b, int size_a, int size_b)
 {
 	int i;
 	int swap;
+	
+	if(size_a == 0)
+		return ;
+	swap = array_a[0];
+	array_a[0] = 0;
+	size_a--;
+	size_b++;	
+	i = size_b;
+// 1 4 6 3	(9 3)
+	while(0 < i)
+	{
+		array_b[i] = array_b[i - 1];
+		i--;
+	}
+	i = size_a;
+	while(0 < i)
+	{
+		array_a[i] = array_a[i - 1];
+		i--;
+	}
+	array_b[0] = swap;
+	ft_ra(array_a);
 
-	swap = array[0];
-	
-	i= 0;
-	sizeA--;
-	sizeB++;
-	
+
 
 }
 void	ft_bubble(int *arrayA, int *arrayB, int sizeA)
@@ -222,16 +240,20 @@ void	ft_bubble(int *arrayA, int *arrayB, int sizeA)
 	full_size = sizeA;
 	sizeB = 0;
 
-	i = i;
+	i = 0;
 	
-	while(1)
+	while(i < 1)
 	{
 		smallest = ft_small(arrayA, sizeA);
-		
-		if((sizeA >= 2) && arrayA[0] > arrayA[1])
-			ft_pb(arrayA, arrayB, sizeA, sizeB);
+	
+		ft_pb(arrayA, arrayB, sizeA, sizeB);
+		ft_pb(arrayA, arrayB, sizeA, sizeB);
+//		if((sizeA >= 2) && arrayA[0] > arrayA[1])
+//			ft_pb(arrayA, arrayB, sizeA, sizeB);
+		i++;
 	}
-
+	ft_show_two(arrayA, arrayB, full_size);
+	return ;
 }
 
 int	main(int argc, char **argv)
@@ -268,8 +290,7 @@ int	main(int argc, char **argv)
 
 	i = 0;
 
-	ft_show(arrayA, arrayB, size);
-	return(0);
+	ft_show_two(arrayA, arrayB, size);
 
 	ft_bubble(arrayA, arrayB, size);
 
