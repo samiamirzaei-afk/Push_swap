@@ -1,4 +1,6 @@
-void	ft_ra(int *array_a, int size)
+#include "head.h"
+
+void	ft_ra(int *array_a, int size, char *command)
 {
 	int temp;
 	int i;
@@ -12,9 +14,11 @@ void	ft_ra(int *array_a, int size)
 		i++;
 	}
 	array_a[i] = temp;
+	if(command[0] != '-')
+		write(1, command, 3);
 }
 
-void	ft_rra(int *array_a, int size)
+void	ft_rra(int *array_a, int size, char *command)
 {
 	int temp;
 	int i;
@@ -28,4 +32,6 @@ void	ft_rra(int *array_a, int size)
 		i--;
 	}
 	array_a[0] = temp;
+	if(command[0] != '-')
+		write(1, command, 4);
 }
