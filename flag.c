@@ -79,7 +79,7 @@ int ft_found_flag(char *str)
 	return(0);
 
 }
-
+// --lashflalhjf  --simple
 int ft_flag(char **argv, short *flags)
 {
 	int i;
