@@ -16,20 +16,27 @@ float ft_disorder(int *array, int size)
 {
 	float mistake;
 	float size_f;
-	float result;
 	int i;
+	int j;
 
 	i = 0;
+	j = 0;
 	mistake = 0;
-	size_f = size;
-	while(i < size - 1)
+	size_f = 0;
+	while(i < size)
 	{
+		j = i + 1;
+		while(j < size)
+		{
+//			printf("comparing [%d] with [%d]: %d | %d\n",i , i + 1, array[i], array[j]);
+			if(array[i] > array[j])
+				mistake++;
+			size_f++;
+			j++;
+		}
 //		printf("comparing [%d] with [%d]: %d | %d\n",i , i + 1, array[i], array[i+1]);
-		if(array[i] > array[i+1])
-				mistake += 1;
 		i++;
 	}
-	result = mistake / (size_f - 1);
-//	printf("mistake: [%f] / size_f [%f], = %f\n", mistake, size_f - 1, result);
-	return(result);
+//	printf("mistake: [%f] / size_f [%f], = %f\n", mistake, size_f - 1, mistake / (size_f));
+	return(mistake / (size_f));
 }

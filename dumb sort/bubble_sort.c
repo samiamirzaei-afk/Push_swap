@@ -107,14 +107,11 @@ void	ft_bubble(int *array_a, int *array_b, int size_a)
 {
 	int smallest;
 	int small_i;
-	int i;
 	int size_b;
-	int full_size;
 
-	full_size = size_a;
+	if(size_a == 5)
+		return(five_sort(array_a, array_b, size_a));
 	size_b = 0;
-
-	i = 0;
 
 	while(1)
 	{
