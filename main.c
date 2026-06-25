@@ -46,6 +46,8 @@ int	main(int argc, char **argv)
 		return(write(1,"Error2\n", 7), 1);
 
 	dis = ft_disorder(array, size);
+	if(dis == 0)
+		return(0);
 	printf("disorder: %f\n", dis);
 	return(0);
 }
