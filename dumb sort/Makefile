@@ -1,6 +1,7 @@
 
 SRC = bubble_sort.c\
-	rra_ra.c
+	rra_ra.c\
+	five_sort.c
 	 
 
 all:
