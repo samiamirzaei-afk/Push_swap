@@ -9,6 +9,10 @@ SRC = main.c\
 	  utils.c\
 	  utils2.c\
 	  ft_atoi.c\
-	  error_check.c
+	  error_check.c\
+	  bubble_sort.c\
+	  rra_ra_sa_pa.c\
+	  five_sort.c
+
 all:
 	$(CC) $(CFLAGS) $(SRC) -g -o $(NAME)

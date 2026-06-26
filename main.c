@@ -27,8 +27,11 @@ int	main(int argc, char **argv)
 	int		size;
 	float		dis;
 	short	flags[FLAG_SIZE + 1];
+	int 	main_flag;
+	int	option_flag;
 
-
+	main_flag = 0;
+	option_flag = 0;
 	if (argc < 2)
 	{
 		printf("please provide 2 or more numbers [...]\n");
@@ -48,6 +51,23 @@ int	main(int argc, char **argv)
 	printf("disorder: %f\n", dis);
 	if(dis == 0)
 		return(0);
-		
+	i = 0;
+	while(i < FLAG_SIZE)
+	{
+		if(flags[i] == BENCH)
+		{
+			option_flag = flags[i];
+			i++;
+		}
+		if(flags[i] >= ADAPTIVE && flags[i] <= SIMPLE )
+		{
+			main_flag = flags[i];
+			i++;
+		}
+		i++;
+	}
+	if(main_flag == SIMPLE)
+		bubble_main(array, size);
+
 	return(0);
 }

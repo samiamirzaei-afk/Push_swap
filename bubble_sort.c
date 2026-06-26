@@ -102,7 +102,7 @@ void	ft_bubble(int *array_a, int *array_b, int size_a)
 	return ;
 }
 
-int	bubble_main(int *array_a, int size)
+void	bubble_main(int *array_a, int size)
 {
 	
 	int *array_b;
@@ -111,7 +111,7 @@ int	bubble_main(int *array_a, int size)
 
 	array_b = malloc((size + 1) * sizeof(int));
 	if(!array_b)
-		return(free(array_a), 0);
+		free(array_a);
 	while(i < size)
 	{
 		array_b[i] = 0;
