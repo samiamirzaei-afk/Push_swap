@@ -59,7 +59,7 @@ void	ft_pb(int *array_a, int *array_b, int *size_a, int *size_b, char *command)
 	(*size_b)++;
 	ft_ra(array_a, (*size_a + *size_b), "-");
 	i = *size_b;
-	while(0 < i)
+	while(0 < i && ( *size_a != 0 && size_b != 0))
 	{
 		array_b[i] = array_b[i - 1];
 		i--;

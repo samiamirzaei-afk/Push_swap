@@ -117,9 +117,10 @@ void	bubble_main(int *array_a, int size)
 	i = 0;
 
 	if(size <= 5)
-		return(five_sort(array_a, array_b, size));
+		five_sort(array_a, array_b, size);
+	else
 //	ft_show_two(array_a, array_b, size);
-	ft_bubble(array_a, array_b, size);
+		ft_bubble(array_a, array_b, size);
 //	ft_show_two(array_a, array_b, size);
 //	ft_show_one(array_a, size);
 	free(array_a);
