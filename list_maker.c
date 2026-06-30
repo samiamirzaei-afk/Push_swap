@@ -16,10 +16,6 @@ t_list	*ft_lstnew(int content)
 void	ft_lstadd_back(t_list **head, t_list *new)
 {
 	t_list	*ptr;
-
-	if (!head || !new)
-		return ;
-	if (*head == NULL)
 	{
 		*head = new;
 		return ;
@@ -45,34 +41,25 @@ void	ft_lstclear(t_list **head)
 	*head = NULL;
 }
 
-int    main(int argc, char **argv)
+int	list_maker(int *array, int size, t_list **head)
 {
-	if (argc < 2)
-	{
-		printf("please provide an argument");
-		return (1);
-	}
-	int size;
 	int i;
-	t_list *head;
 	t_list *ptr;
 	t_list *temp;
 
-	head = NULL;
 	ptr = NULL;
-	i = 1;
-	size = argc - 1;
-	while(argv[i] != NULL)
+	i = 0;
+	while(i < size)
 	{
-		ptr = ft_lstnew(ft_atoi(argv[i]));
+		ptr = ft_lstnew(array[i]);
 		if(ptr == NULL)
 		{
-			ft_lstclear(&head);
+			ft_lstclear(head);
         		return(0) ;
 		}
-		if(head == NULL)
+		if(*head == NULL)
 		{
-			head = ptr;
+			*head = ptr;
 			temp = ptr;
 		}
 		else
@@ -82,14 +69,14 @@ int    main(int argc, char **argv)
 		}
 		i++;
 	}
-
-	ptr = head;
+/*
+	ptr = *head;
 	for(i = 0; ptr != NULL; i++)
 	{
 		printf("link[%d]: %d\n", i, ptr->num);
 		ptr = ptr->next;
 	}
-
-	ft_lstclear(&head);
+*/
+	return(1);
 }
 

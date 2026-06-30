@@ -1,4 +1,4 @@
-#include "head.h"
+#include "push.h"
 
 void	ft_ra(int *array_a, int size, char *command)
 {

@@ -58,6 +58,12 @@ typedef enum e_flag
 #define FLAG_SIZE 2
 #endif
 
+typedef struct s_list
+{
+	int		num;
+	struct s_list	*next;
+}	t_list;
+
 typedef struct s_five 
 {
         int small;
@@ -66,6 +72,22 @@ typedef struct s_five
         int big_i;
 
 }	t_big_small;
+
+
+/* rra_ra_sa_pa.c */
+void	ft_ra(int *array_a, int size, char *command);
+void	ft_rra(int *array_a, int size, char *command);
+void	ft_pb(int *array_a, int *array_b, int *size_a, int *size_b, char *command);
+void	ft_swap(int *array);
+
+/* five_sort */
+void	ft_big_small(int *array, int size, t_big_small *list); 
+void	ft_three_sort(int *array_a, int size_a);
+void	five_sort(int *array_a, int *array_b, int size_a);
+
+/* disorder.c */ 
+int ft_sort(int *array, int size);
+float ft_disorder(int *array, int size);
 
 /* rra_ra_sa_pa.c */
 void	ft_ra(int *array_a, int size, char *command);
@@ -83,9 +105,18 @@ void	ft_show_two(int *array_a, int *array_b, int size);
 void	ft_show_one(int *arraya, int size);
 int	ft_small(int *array, int size, int *small_i);
 void	ft_bubble(int *array_a, int *array_b, int size_a);
-int	bubble_main(int *array_a, int size);
+void	bubble_main(int *array_a, int size);
 
-
+/* ??? */
+int	list_maker(int *array, int size, t_list **head);
+t_list	*ft_lstnew(int content);
+void	ft_lstadd_front( t_list **list, t_list *new);
+int	ft_lstsize(t_list *list);
+t_list	*ft_lstlast(t_list *list);
+void	ft_lstadd_back(t_list **list, t_list *new);
+void	ft_lstdelone(t_list *trash, void (*del)(void*));
+void	ft_lstclear(t_list **head);
+void	ft_lstiter(t_list *list, void (*f)(void *));
 
 
 /*

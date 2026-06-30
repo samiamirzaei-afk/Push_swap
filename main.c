@@ -29,9 +29,13 @@ int	main(int argc, char **argv)
 	short	flags[FLAG_SIZE + 1];
 	int 	main_flag;
 	int	option_flag;
-
+	t_list	*head;
+	
+	head = NULL;
 	main_flag = 0;
 	option_flag = 0;
+
+	(void)option_flag;
 	if (argc < 2)
 	{
 		printf("please provide 2 or more numbers [...]\n");
@@ -67,7 +71,21 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	if(main_flag == SIMPLE)
+	{
 		bubble_main(array, size);
+		return(1);
+	}
+
+	if(list_maker(array, size, &head) == 0)
+		return(write(1,"Error3\n", 7), 1);
+	t_list *ptr_ptr;
+	ptr_ptr = head;
+	for(i = 0; ptr_ptr != NULL; i++)
+	{
+		printf("link[%d]: %d\n", i, ptr_ptr->num);
+		ptr_ptr = ptr_ptr->next;
+	}
+	ft_lstclear(&head);
 
 	return(0);
 }

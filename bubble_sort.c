@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "head.h"
+#include "push.h"
 
 void	ft_show_two(int *arrayA, int *arrayB, int size)
 {
@@ -74,8 +74,6 @@ void	ft_bubble(int *array_a, int *array_b, int size_a)
 	int small_i;
 	int size_b;
 
-	if(size_a <= 5)
-		return(five_sort(array_a, array_b, size_a));
 	size_b = 0;
 	while(1)
 	{
@@ -94,8 +92,8 @@ void	ft_bubble(int *array_a, int *array_b, int size_a)
 			else
 				ft_rra(array_a, size_a, "rra\n");
 		}
-		// if(0 == ft_sort(array_a, size))
-		// 	break
+		if(0 == ft_sort(array_a, size_a))
+			break;
 	}
 	while(size_b)
 		ft_pb(array_b, array_a, &size_b, &size_a, "pa\n");
@@ -104,7 +102,6 @@ void	ft_bubble(int *array_a, int *array_b, int size_a)
 
 void	bubble_main(int *array_a, int size)
 {
-	
 	int *array_b;
 	int i;
 	i = 1;
@@ -119,6 +116,8 @@ void	bubble_main(int *array_a, int size)
 	}
 	i = 0;
 
+	if(size <= 5)
+		return(five_sort(array_a, array_b, size));
 //	ft_show_two(array_a, array_b, size);
 	ft_bubble(array_a, array_b, size);
 //	ft_show_two(array_a, array_b, size);

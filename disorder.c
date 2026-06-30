@@ -12,6 +12,22 @@ mistakes += 1
 return mistakes / total_pairs
 */
 
+
+int ft_sort(int *array, int size)
+{
+	int i;
+
+	i = 0;
+	while(i < size - 1)
+	{
+		if(array[i] > array[i+ 1])
+			return(1);
+		i++;
+	}
+	return(0);
+}
+
+
 float ft_disorder(int *array, int size)
 {
 	float mistake;

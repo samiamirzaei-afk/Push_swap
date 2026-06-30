@@ -12,7 +12,8 @@ SRC = main.c\
 	  error_check.c\
 	  bubble_sort.c\
 	  rra_ra_sa_pa.c\
-	  five_sort.c
+	  five_sort.c\
+	  list_maker.c
 
 all:
 	$(CC) $(CFLAGS) $(SRC) -g -o $(NAME)
