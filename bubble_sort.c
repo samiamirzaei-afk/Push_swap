@@ -1,7 +1,7 @@
 /*
 	1- scan through the list and find the smallest number.
 	2- if a[0] > a[1], SA
-	3-RRA to get the smallest possible number to a[0], then push to stack B.
+	3-RRA or RA to get the smallest possible number to a[0], then push to stack B.
 */
 
 #include <stdio.h>
@@ -77,7 +77,6 @@ void	ft_bubble(int *array_a, int *array_b, int size_a)
 	if(size_a <= 5)
 		return(five_sort(array_a, array_b, size_a));
 	size_b = 0;
-
 	while(1)
 	{
 		smallest = ft_small(array_a, size_a, &small_i);
@@ -95,10 +94,11 @@ void	ft_bubble(int *array_a, int *array_b, int size_a)
 			else
 				ft_rra(array_a, size_a, "rra\n");
 		}
+		// if(0 == ft_sort(array_a, size))
+		// 	break
 	}
 	while(size_b)
 		ft_pb(array_b, array_a, &size_b, &size_a, "pa\n");
-
 	return ;
 }
 

@@ -13,6 +13,38 @@ t_list	*ft_lstnew(int content)
 	return (ptr);
 }
 
+void	ft_lstadd_back(t_list **head, t_list *new)
+{
+	t_list	*ptr;
+
+	if (!head || !new)
+		return ;
+	if (*head == NULL)
+	{
+		*head = new;
+		return ;
+	}
+	ptr = *head;
+	while (ptr->next != NULL)
+		ptr = ptr->next;
+	ptr->next = new;
+}
+
+void	ft_lstclear(t_list **head)
+{
+	t_list	*ptr;
+	t_list	*ptr2;
+
+	ptr = *head;
+	while (ptr != NULL)
+	{
+		ptr2 = ptr;
+		ptr = ptr->next;
+		free(ptr2);
+	}
+	*head = NULL;
+}
+
 int    main(int argc, char **argv)
 {
 	if (argc < 2)
@@ -25,30 +57,29 @@ int    main(int argc, char **argv)
 	t_list *head;
 	t_list *ptr;
 
-	head = NULL;	
+	ptr = NULL;
 	i = 1;
 	size = argc - 1;
-	head = ptr;
 	while(argv[i] != NULL)
 	{
 		ptr = ft_lstnew(ft_atoi(argv[i]));
 		if(ptr == NULL)
 		{
-//        		ft_free_all(head);
+			ft_lstclear(&head);
         		return(0) ;
 		}
-//		printf("current ptr->num: %d\n", ptr->num);
-//		printf("current head: %d\n", head->num);
-		ptr = ptr->next;
+		if(head == NULL)
+			head = ptr;
+		else
+			ft_lstadd_back(&head, ptr);
 		i++;
 	}
 	ptr = head;
-	printf("current ptr->num: %d\n", ptr->num);
-
-	for(i = 0; ptr->next != NULL; i++)
+	for(i = 0; ptr != NULL; i++)
 	{
 		printf("link[%d]: %d\n", i, ptr->num);
 		ptr = ptr->next;
 	}
+	ft_lstclear(&head);
 }
 
