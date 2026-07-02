@@ -6,7 +6,7 @@
 /*   By: ammirzae <ammirzae@student.42vienna.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 14:24:16 by ammirzae          #+#    #+#             */
-/*   Updated: 2026/06/25 13:58:37 by ammirzae         ###   ########.fr       */
+/*   Updated: 2026/07/02 18:57:54 by ammirzae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -30,6 +30,7 @@ int	main(int argc, char **argv)
 	int 	main_flag;
 	int	option_flag;
 	t_list	*head;
+	t_ops	*all_ops;
 	
 	head = NULL;
 	main_flag = 0;
@@ -53,6 +54,9 @@ int	main(int argc, char **argv)
 
 	dis = ft_disorder(array, size);
 	printf("disorder: %f\n", dis);
+	ft_op_to_zero(&all_ops);
+
+	ft_print_ops(&all_ops);
 	if(dis == 0)
 		return(0);
 	i = 0;
@@ -69,6 +73,12 @@ int	main(int argc, char **argv)
 			i++;
 		}
 		i++;
+	}
+
+	if(option_flag == BENCH)
+	{
+		
+	
 	}
 	if(main_flag == SIMPLE)
 	{

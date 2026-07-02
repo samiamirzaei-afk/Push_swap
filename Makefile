@@ -13,7 +13,8 @@ SRC = main.c\
 	  bubble_sort.c\
 	  rra_ra_sa_pa.c\
 	  five_sort.c\
-	  list_maker.c
+	  list_maker.c\
+	  ft_op_to_zero.c
 
 all:
 	$(CC) $(CFLAGS) $(SRC) -g -o $(NAME)

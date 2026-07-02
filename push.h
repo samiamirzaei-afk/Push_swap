@@ -7,6 +7,20 @@
 #include <string.h>
 #include <stdlib.h>
 
+typedef struct s_op 
+{
+        unsigned short	sa;
+        unsigned short	sb;
+        unsigned short	ss;
+        unsigned short	pa;
+        unsigned short	pb;
+        unsigned short	ra;
+        unsigned short	rb;
+        unsigned short	rr;
+        unsigned short	rra;
+        unsigned short	rrb;
+        unsigned short	rrr;
+}	t_ops;
 
 
 /*	disorder.c */
@@ -33,9 +47,12 @@ short ft_issymbol(int num);
 /* ft_atoi */
 int	ft_atoi(char *str);
 
-
+/* ft_op_to_zero.c */
+void	ft_print_ops(t_ops **all_ops);
+t_ops	**ft_op_to_zero(t_ops **all_ops);
 /* error_check */
 short	ft_array_check(int *array, int size);
+
 
 typedef enum e_flag
 {
@@ -72,6 +89,7 @@ typedef struct s_five
         int big_i;
 
 }	t_big_small;
+
 
 
 /* rra_ra_sa_pa.c */
