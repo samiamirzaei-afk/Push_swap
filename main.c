@@ -22,31 +22,32 @@ argv[6] = NULL;
 
 int	main(int argc, char **argv)
 {
-	int		i;
-	int		*array;
-	int		size;
-	float		dis;
-	short	flags[FLAG_SIZE + 1];
-	int 	main_flag;
-	int	option_flag;
-	t_list	*head;
+	int	i;
+	int	*array;
+	int	size;
+	float	dis;
+//       short   flags[FLAG_SIZE + 1];
+//       int     main_flag;
+//       int     option_flag;
+	t_s_flag	s_flag;
 	t_ops	*all_ops;
+	t_list	*head;
 	
 	head = NULL;
-	main_flag = 0;
-	option_flag = 0;
-
-	(void)option_flag;
+//	main_flag = 0;
+//	option_flag = 0;
+//	(void)option_flag;
+	
 	if (argc < 2)
 	{
 		printf("please provide 2 or more numbers [...]\n");
 		return (1);
 	}
 	size = 0;
-	if((ft_flag(argv, flags)) == -1)
+	if((ft_flag(argv, s_flag.flags)) == -1)
 		return(write(1,"Error\n", 6), 1);
 	for(i = 0; i <= FLAG_SIZE; i++)
-		printf("flag%d:[%d]\n", i, flags[i]);		
+		printf("flag%d:[%d]\n", i, s_flag.flags[i]);		
 
 	array = ft_argv_to_array(argc, argv, &size);
 	if(ft_array_check(array, size) == -1)
@@ -62,27 +63,22 @@ int	main(int argc, char **argv)
 	i = 0;
 	while(i < FLAG_SIZE)
 	{
-		if(flags[i] == BENCH)
+		if(s_flag.flags[i] == BENCH)
 		{
-			option_flag = flags[i];
+			s_flag.option_flag = s_flag.flags[i];
 			i++;
 		}
-		if(flags[i] >= ADAPTIVE && flags[i] <= SIMPLE )
+		if(s_flag.flags[i] >= ADAPTIVE && s_flag.flags[i] <= SIMPLE )
 		{
-			main_flag = flags[i];
+			s_flag.main_flag = s_flag.flags[i];
 			i++;
 		}
 		i++;
 	}
 
-	if(option_flag == BENCH)
+	if(s_flag.main_flag == SIMPLE)
 	{
-		
-	
-	}
-	if(main_flag == SIMPLE)
-	{
-		bubble_main(array, size);
+		bubble_main(array, size, s_flag.option_flag);
 		return(1);
 	}
 

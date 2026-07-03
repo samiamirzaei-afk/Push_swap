@@ -7,7 +7,27 @@
 #include <string.h>
 #include <stdlib.h>
 
-typedef struct s_op 
+#define ADA "adaptive"
+#define COM "complex"
+#define MED "medium"
+#define SIM "simple"
+#define BEN "bench"
+#ifndef FLAG_SYMBOL
+#define FLAG_SYMBOL '-'
+#endif
+#ifndef FLAG_SIZE
+#define FLAG_SIZE 2
+#endif
+
+typedef struct s_flag
+{
+	short	flags[FLAG_SIZE + 1];
+	short 	main_flag;
+	short	option_flag;
+
+}	t_s_flag;
+
+typedef struct s_op
 {
         unsigned short	sa;
         unsigned short	sb;
@@ -63,18 +83,6 @@ typedef enum e_flag
     BENCH
 }   t_flag;
 
-#define ADA "adaptive"
-#define COM "complex"
-#define MED "medium"
-#define SIM "simple"
-#define BEN "bench"
-#ifndef FLAG_SYMBOL
-#define FLAG_SYMBOL '-'
-#endif
-#ifndef FLAG_SIZE
-#define FLAG_SIZE 2
-#endif
-
 typedef struct s_list
 {
 	int		num;
@@ -96,7 +104,7 @@ typedef struct s_five
 void	ft_ra(int *array_a, int size, char *command);
 void	ft_rra(int *array_a, int size, char *command);
 void	ft_pb(int *array_a, int *array_b, int *size_a, int *size_b, char *command);
-void	ft_swap(int *array);
+void	ft_swap(int *array, char* command, short option);
 
 /* five_sort */
 void	ft_big_small(int *array, int size, t_big_small *list); 
@@ -107,12 +115,6 @@ void	five_sort(int *array_a, int *array_b, int size_a);
 int ft_sort(int *array, int size);
 float ft_disorder(int *array, int size);
 
-/* rra_ra_sa_pa.c */
-void	ft_ra(int *array_a, int size, char *command);
-void	ft_rra(int *array_a, int size, char *command);
-void	ft_pb(int *array_a, int *array_b, int *size_a, int *size_b, char *command);
-void	ft_swap(int *array);
-
 /* five_sort */
 void	ft_big_small(int *array, int size, t_big_small *list); 
 void	ft_three_sort(int *array_a, int size_a);
@@ -122,8 +124,8 @@ void	five_sort(int *array_a, int *array_b, int size_a);
 void	ft_show_two(int *array_a, int *array_b, int size);
 void	ft_show_one(int *arraya, int size);
 int	ft_small(int *array, int size, int *small_i);
-void	ft_bubble(int *array_a, int *array_b, int size_a);
-void	bubble_main(int *array_a, int size);
+void	ft_bubble(int *array_a, int *array_b, int size_a, short option);
+void	bubble_main(int *array_a, int size, short option);
 
 /* ??? */
 int	list_maker(int *array, int size, t_list **head);

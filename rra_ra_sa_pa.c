@@ -36,14 +36,19 @@ void	ft_rra(int *array_a, int size, char *command)
 		write(1, command, 4);
 }
 
-void ft_swap(int *array)
+void ft_swap(int *array, char *command, short option)
 {
 	int temp;
 
 	temp = array[0];
 	array[0] = array[1];
 	array[1] = temp;
-	write(1, "sa\n", 3);
+	if(option == 1)
+	{
+		
+	
+	}
+	write(1, command, 3);
 }
 
 void	ft_pb(int *array_a, int *array_b, int *size_a, int *size_b, char *command)

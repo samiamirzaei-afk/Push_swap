@@ -68,7 +68,7 @@ int ft_small(int *array, int size, int *small_i)
 	return(small);
 }
 
-void	ft_bubble(int *array_a, int *array_b, int size_a)
+void	ft_bubble(int *array_a, int *array_b, int size_a, short option_flag)
 {
 	int smallest;
 	int small_i;
@@ -79,7 +79,7 @@ void	ft_bubble(int *array_a, int *array_b, int size_a)
 	{
 		smallest = ft_small(array_a, size_a, &small_i);
 		if((size_a >= 2) && array_a[0] > array_a[1])
-			ft_swap(array_a);
+			ft_swap(array_a, "sa\n", option_flag);
 		if(array_a[0] == smallest)
 			ft_pb(array_a, array_b, &size_a, &size_b, "pb\n");
 		if(size_a == 0)
@@ -100,7 +100,7 @@ void	ft_bubble(int *array_a, int *array_b, int size_a)
 	return ;
 }
 
-void	bubble_main(int *array_a, int size)
+void	bubble_main(int *array_a, int size, short option)
 {
 	int *array_b;
 	int i;
@@ -117,10 +117,10 @@ void	bubble_main(int *array_a, int size)
 	i = 0;
 
 	if(size <= 5)
-		five_sort(array_a, array_b, size);
+		five_sort(array_a, array_b, size, option);
 	else
 //	ft_show_two(array_a, array_b, size);
-		ft_bubble(array_a, array_b, size);
+		ft_bubble(array_a, array_b, size, option);
 //	ft_show_two(array_a, array_b, size);
 //	ft_show_one(array_a, size);
 	free(array_a);
