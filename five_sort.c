@@ -56,22 +56,22 @@ void ft_big_small(int *array, int size, t_big_small *list)
         int big_i
 */
 
-void ft_three_sort_2(int *array_a, int size_a, t_big_small list)
+void ft_three_sort_2(int *array_a, int size_a, t_big_small list, short option)
 {
 	if(list.big_i == 1 && list.small_i == 0)
 	{
-		ft_rra(array_a, size_a, "rra\n");
-		ft_swap(array_a);
+		ft_rra(array_a, size_a, "rra\n", option);
+		ft_swap(array_a, "sa\n", option);
 		return ;	
 	}	
 	if(list.big_i == 0 && list.small_i == 2)
 	{
-		ft_swap(array_a);
-		ft_rra(array_a, size_a, "rra\n");
+		ft_swap(array_a, "sa\n", option);
+		ft_rra(array_a, size_a, "rra\n", option);
 		return ;	
 	}	
 }
-void ft_three_sort(int *array_a, int size_a)
+void ft_three_sort(int *array_a, int size_a, short option)
 {
 	t_big_small list;
 
@@ -80,24 +80,24 @@ void ft_three_sort(int *array_a, int size_a)
 		return ;
 	if(list.big_i == 0 && list.small_i == 1)
 	{
-		ft_ra(array_a, size_a, "ra\n");
+		ft_ra(array_a, size_a, "ra\n", option);
 		return ;	
 	}	
 	if(list.big_i == 1 && list.small_i == 2)
 	{
-		ft_rra(array_a, size_a, "rra\n");
+		ft_rra(array_a, size_a, "rra\n", option);
 		return ;	
 	}	
 	if(list.big_i == 2 && list.small_i == 1)
 	{
-		ft_swap(array_a);
+		ft_swap(array_a, "sa\n", option);
 		return ;	
 	}
-	ft_three_sort_2(array_a, size_a, list);
+	ft_three_sort_2(array_a, size_a, list, option);
 }
 
 
-void five_sort(int *array_a, int *array_b, int size_a)
+void five_sort(int *array_a, int *array_b, int size_a, short option)
 {
 	int smallest;
 	int small_i;
@@ -108,18 +108,18 @@ void five_sort(int *array_a, int *array_b, int size_a)
 	{
 		smallest = ft_small(array_a, size_a, &small_i);
 		if(array_a[0] == smallest)
-			ft_pb(array_a, array_b, &size_a, &size_b, "pb\n");
+			ft_pb(array_a, array_b, &size_a, &size_b, "pb\n", option);
 		smallest = ft_small(array_a, size_a, &small_i);
 		if ((array_a[0] != smallest && size_a > 3))
 		{
 			if(small_i <= (size_a / 2))
-				ft_ra(array_a, size_a, "ra\n");
+				ft_ra(array_a, size_a, "ra\n", option);
 			else
-				ft_rra(array_a, size_a, "rra\n");
+				ft_rra(array_a, size_a, "rra\n", option);
 		}
 	}
-	ft_three_sort(array_a, size_a);
+	ft_three_sort(array_a, size_a, option);
 	while(size_b)
-		ft_pb(array_b, array_a, &size_b, &size_a, "pa\n");
+		ft_pb(array_b, array_a, &size_b, &size_a, "pa\n", option);
 	return ;
 }

@@ -1,6 +1,6 @@
 #include "push.h"
 
-void	ft_ra(int *array_a, int size, char *command)
+void	ft_ra(int *array_a, int size, char *command, short option)
 {
 	int temp;
 	int i;
@@ -14,11 +14,17 @@ void	ft_ra(int *array_a, int size, char *command)
 		i++;
 	}
 	array_a[i] = temp;
-	if(command[0] != '-')
-		write(1, command, 3);
+	if(command[0] == '-')
+		return ; 
+	if(option == BENCH)
+	{
+		write(2, command, 4);
+		return ;
+	}
+	write(1, command, 4);
 }
 
-void	ft_rra(int *array_a, int size, char *command)
+void	ft_rra(int *array_a, int size, char *command, short option)
 {
 	int temp;
 	int i;
@@ -32,8 +38,14 @@ void	ft_rra(int *array_a, int size, char *command)
 		i--;
 	}
 	array_a[0] = temp;
-	if(command[0] != '-')
-		write(1, command, 4);
+	if(command[0] == '-')
+		return ; 
+	if(option == BENCH)
+	{
+		write(2, command, 4);
+		return ;
+	}
+	write(1, command, 4);
 }
 
 void ft_swap(int *array, char *command, short option)
@@ -43,15 +55,15 @@ void ft_swap(int *array, char *command, short option)
 	temp = array[0];
 	array[0] = array[1];
 	array[1] = temp;
-	if(option == 1)
+	if(option == BENCH)
 	{
-		
-	
+		write(2, command, 3);
+		return ;
 	}
 	write(1, command, 3);
 }
 
-void	ft_pb(int *array_a, int *array_b, int *size_a, int *size_b, char *command)
+void	ft_pb(int *array_a, int *array_b, int *size_a, int *size_b, char *command, short option)
 {
 	int i;
 	int swap;
@@ -62,7 +74,7 @@ void	ft_pb(int *array_a, int *array_b, int *size_a, int *size_b, char *command)
 	array_a[0] = 0;
 	(*size_a)--;
 	(*size_b)++;
-	ft_ra(array_a, (*size_a + *size_b), "-");
+	ft_ra(array_a, (*size_a + *size_b), "-", option);
 	i = *size_b;
 	while(0 < i && ( *size_a != 0 && size_b != 0))
 	{
@@ -71,5 +83,12 @@ void	ft_pb(int *array_a, int *array_b, int *size_a, int *size_b, char *command)
 	}
 	i = *size_a;
 	array_b[0] = swap;
-	write(1, &command[0], 3);
+	if(command[0] == '-')
+		return ; 
+	if(option == BENCH)
+	{
+		write(2, command, 3);
+		return ;
+	}
+	write(1, command, 3);
 }

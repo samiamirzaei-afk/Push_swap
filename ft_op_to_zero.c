@@ -12,6 +12,9 @@ void ft_print_ops(t_ops **all_ops)
 
 t_ops **ft_op_to_zero(t_ops **all_ops)
 {	
+	(*all_ops) = malloc(sizeof(t_ops));
+	if((*all_ops) == NULL)
+		return(NULL);
 	(*all_ops)->sa = 0;
 	(*all_ops)->sb = 0;
 	(*all_ops)->ss = 0;
