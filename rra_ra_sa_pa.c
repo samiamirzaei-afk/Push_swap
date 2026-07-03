@@ -63,7 +63,7 @@ void ft_swap(int *array, char *command, short option)
 	write(1, command, 3);
 }
 
-void	ft_pb(int *array_a, int *array_b, int *size_a, int *size_b, char *command, short option)
+void	ft_pb(t_arrays *list char *command, short option)
 {
 	int i;
 	int swap;

@@ -68,7 +68,7 @@ int ft_small(int *array, int size, int *small_i)
 	return(small);
 }
 
-void	ft_bubble(int *array_a, int *array_b, int size_a, short option)
+void	ft_bubble(t_arrays list, short option)
 {
 	int smallest;
 	int small_i;
@@ -77,22 +77,22 @@ void	ft_bubble(int *array_a, int *array_b, int size_a, short option)
 	size_b = 0;
 	while(1)
 	{
-		smallest = ft_small(array_a, size_a, &small_i);
-		if((size_a >= 2) && array_a[0] > array_a[1])
-			ft_swap(array_a, "sa\n", option);
-		if(array_a[0] == smallest)
-			ft_pb(array_a, array_b, &size_a, &size_b, "pb\n", option);
-		if(size_a == 0)
+		smallest = ft_small(list.array_a, list.size_a, &small_i);
+		if((list.size_a >= 2) && list.array_a[0] > list.array_a[1])
+			ft_swap(list.array_a, "sa\n", option);
+		if(list.array_a[0] == smallest)
+			ft_pb(&list, "pb\n", option);
+		if(list.size_a == 0)
 			break ;
-		smallest = ft_small(array_a, size_a, &small_i);
-		if ((array_a[0] != smallest))
+		smallest = ft_small(list.array_a, list.size_a, &small_i);
+		if ((list.array_a[0] != smallest))
 		{
-			if(small_i <= (size_a / 2))
-				ft_ra(array_a, size_a, "ra\n", option);
+			if(small_i <= (list.size_a / 2))
+				ft_ra(list.array_a, list.size_a, "ra\n", option);
 			else
-				ft_rra(array_a, size_a, "rra\n", option);
+				ft_rra(list.array_a, list.size_a, "rra\n", option);
 		}
-		if(0 == ft_sort(array_a, size_a))
+		if(0 == ft_sort(list.array_a, list.size_a))
 			break;
 	}
 	while(size_b)
@@ -100,6 +100,33 @@ void	ft_bubble(int *array_a, int *array_b, int size_a, short option)
 	return ;
 }
 
+void	bubble_main(int *array_oa, int size, short option)
+{
+	t_arrays array_list;
+	int i;
+	
+	i = 0;
+	array_list.array_b = malloc((size + 1) * sizeof(int));
+	if(!array_list.array_b)
+		free(array_oa);
+	while(i < size)
+	{
+		array_list.array_b[i] = 0;
+		i++;
+	}
+	array_list.array_a = array_oa;
+	array_list.size_a = size;
+	if(size <= 5)
+		five_sort(array_a, array_b, size, option);
+	else
+//	ft_show_two(array_a, array_b, size);
+		ft_bubble(array_list, option);
+//	ft_show_two(array_a, array_b, size);
+//	ft_show_one(array_a, size);
+	free(array_a);
+	free(array_b);
+}
+/*
 void	bubble_main(int *array_a, int size, short option)
 {
 	int *array_b;
@@ -126,3 +153,4 @@ void	bubble_main(int *array_a, int size, short option)
 	free(array_a);
 	free(array_b);
 }
+*/

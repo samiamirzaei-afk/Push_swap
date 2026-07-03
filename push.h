@@ -19,6 +19,15 @@
 #define FLAG_SIZE 2
 #endif
 
+typedef struct s_array
+{
+	int	*array_a;
+	int 	*array_b;
+	int	size_a;
+	int	size_b;
+
+}	t_arrays;
+
 typedef struct s_flag
 {
 	short	flags[FLAG_SIZE + 1];
@@ -119,7 +128,7 @@ float ft_disorder(int *array, int size);
 void	ft_show_two(int *array_a, int *array_b, int size);
 void	ft_show_one(int *arraya, int size);
 int	ft_small(int *array, int size, int *small_i);
-void	ft_bubble(int *array_a, int *array_b, int size_a, short option);
+void	ft_bubble(t_arrays list, short option);
 void	bubble_main(int *array_a, int size, short option);
 
 /* ??? */
