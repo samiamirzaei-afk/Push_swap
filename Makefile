@@ -11,6 +11,7 @@ SRC = main.c\
 	  ft_atoi.c\
 	  error_check.c\
 	  bubble_sort.c\
+	  medium_sort.c\
 	  rra_ra_sa_pa.c\
 	  five_sort.c\
 	  list_maker.c

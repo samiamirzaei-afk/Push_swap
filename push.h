@@ -64,7 +64,7 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-typedef struct s_five 
+typedef struct s_five
 {
         int small;
         int big;
@@ -81,11 +81,11 @@ void	ft_pb(int *array_a, int *array_b, int *size_a, int *size_b, char *command);
 void	ft_swap(int *array);
 
 /* five_sort */
-void	ft_big_small(int *array, int size, t_big_small *list); 
+void	ft_big_small(int *array, int size, t_big_small *list);
 void	ft_three_sort(int *array_a, int size_a);
 void	five_sort(int *array_a, int *array_b, int size_a);
 
-/* disorder.c */ 
+/* disorder.c */
 int ft_sort(int *array, int size);
 float ft_disorder(int *array, int size);
 
@@ -96,7 +96,7 @@ void	ft_pb(int *array_a, int *array_b, int *size_a, int *size_b, char *command);
 void	ft_swap(int *array);
 
 /* five_sort */
-void	ft_big_small(int *array, int size, t_big_small *list); 
+void	ft_big_small(int *array, int size, t_big_small *list);
 void	ft_three_sort(int *array_a, int size_a);
 void	five_sort(int *array_a, int *array_b, int size_a);
 
@@ -106,6 +106,9 @@ void	ft_show_one(int *arraya, int size);
 int	ft_small(int *array, int size, int *small_i);
 void	ft_bubble(int *array_a, int *array_b, int size_a);
 void	bubble_main(int *array_a, int size);
+
+/* medium_sort.c */
+void	ft_sqrt_sort(int *array_a, int size);
 
 /* ??? */
 int	list_maker(int *array, int size, t_list **head);

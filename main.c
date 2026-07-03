@@ -18,7 +18,7 @@ argv[4] = numebr3
 argv[5] = numebr4
 argv[6] = NULL;
 */
-#include "push.h" 
+#include "push.h"
 
 int	main(int argc, char **argv)
 {
@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 	int 	main_flag;
 	int	option_flag;
 	t_list	*head;
-	
+
 	head = NULL;
 	main_flag = 0;
 	option_flag = 0;
@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 	if((ft_flag(argv, flags)) == -1)
 		return(write(1,"Error\n", 6), 1);
 	for(i = 0; i <= FLAG_SIZE; i++)
-		printf("flag%d:[%d]\n", i, flags[i]);		
+		printf("flag%d:[%d]\n", i, flags[i]);
 
 	array = ft_argv_to_array(argc, argv, &size);
 	if(ft_array_check(array, size) == -1)
@@ -74,6 +74,12 @@ int	main(int argc, char **argv)
 	{
 		bubble_main(array, size);
 		return(1);
+	}
+	if(main_flag == MEDIUM)
+	{
+		ft_sqrt_sort(array, size);
+		free(array);
+		return(0);
 	}
 
 	if(list_maker(array, size, &head) == 0)
