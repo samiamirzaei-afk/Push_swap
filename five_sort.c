@@ -97,29 +97,28 @@ void ft_three_sort(int *array_a, int size_a, short option)
 }
 
 
-void five_sort(int *array_a, int *array_b, int size_a, short option)
+void five_sort(t_arrays list, short option)
 {
 	int smallest;
 	int small_i;
-	int size_b;
 
-	size_b = 0;
-	while(size_a > 3)
+	list.size_b = 0;
+	while(list.size_a > 3)
 	{
-		smallest = ft_small(array_a, size_a, &small_i);
-		if(array_a[0] == smallest)
-			ft_pb(array_a, array_b, &size_a, &size_b, "pb\n", option);
-		smallest = ft_small(array_a, size_a, &small_i);
-		if ((array_a[0] != smallest && size_a > 3))
+		smallest = ft_small(list.array_a, list.size_a, &small_i);
+		if(list.array_a[0] == smallest)
+			ft_pb(&list, "pb\n", option);
+		smallest = ft_small(list.array_a, list.size_a, &small_i);
+		if ((list.array_a[0] != smallest && list.size_a > 3))
 		{
-			if(small_i <= (size_a / 2))
-				ft_ra(array_a, size_a, "ra\n", option);
+			if(small_i <= (list.size_a / 2))
+				ft_ra(list.array_a, list.size_a, "ra\n", option);
 			else
-				ft_rra(array_a, size_a, "rra\n", option);
+				ft_rra(list.array_a, list.size_a, "rra\n", option);
 		}
 	}
-	ft_three_sort(array_a, size_a, option);
-	while(size_b)
-		ft_pb(array_b, array_a, &size_b, &size_a, "pa\n", option);
+	ft_three_sort(list.array_a, list.size_a, option);
+	while(list.size_b)
+		ft_pb(&list, "pa\n", option);
 	return ;
 }

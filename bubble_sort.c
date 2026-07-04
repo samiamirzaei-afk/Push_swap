@@ -96,35 +96,35 @@ void	ft_bubble(t_arrays list, short option)
 			break;
 	}
 	while(size_b)
-		ft_pb(array_b, array_a, &size_b, &size_a, "pa\n", option);
+		ft_pb(&list, "pa\n", option);
 	return ;
 }
 
 void	bubble_main(int *array_oa, int size, short option)
 {
-	t_arrays array_list;
+	t_arrays list;
 	int i;
 	
 	i = 0;
-	array_list.array_b = malloc((size + 1) * sizeof(int));
-	if(!array_list.array_b)
+	list.array_b = malloc((size + 1) * sizeof(int));
+	if(!list.array_b)
 		free(array_oa);
 	while(i < size)
 	{
-		array_list.array_b[i] = 0;
+		list.array_b[i] = 0;
 		i++;
 	}
-	array_list.array_a = array_oa;
-	array_list.size_a = size;
+	list.array_a = array_oa;
+	list.size_a = size;
 	if(size <= 5)
-		five_sort(array_a, array_b, size, option);
+		five_sort(list, option);
 	else
 //	ft_show_two(array_a, array_b, size);
-		ft_bubble(array_list, option);
+		ft_bubble(list, option);
 //	ft_show_two(array_a, array_b, size);
 //	ft_show_one(array_a, size);
-	free(array_a);
-	free(array_b);
+	free(list.array_a);
+	free(list.array_b);
 }
 /*
 void	bubble_main(int *array_a, int size, short option)

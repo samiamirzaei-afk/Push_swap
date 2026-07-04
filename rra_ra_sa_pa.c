@@ -63,26 +63,26 @@ void ft_swap(int *array, char *command, short option)
 	write(1, command, 3);
 }
 
-void	ft_pb(t_arrays *list char *command, short option)
+void	ft_pb(t_arrays *list, char *command, short option)
 {
 	int i;
 	int swap;
 	
-	if(*size_a == 0)
+	if((*list).size_a == 0)
 		return ;
-	swap = array_a[0];
-	array_a[0] = 0;
-	(*size_a)--;
-	(*size_b)++;
-	ft_ra(array_a, (*size_a + *size_b), "-", option);
-	i = *size_b;
-	while(0 < i && ( *size_a != 0 && size_b != 0))
+	swap = (*list).array_a[0];
+	(*list).array_a[0] = 0;
+	((*list).size_a)--;
+	((*list).size_b)++;
+	ft_ra((*list).array_a, ((*list).size_a + (*list).size_b), "-", option);
+	i = (*list).size_b;
+	while(0 < i && ( (*list).size_a != 0 && (*list).size_b != 0))
 	{
-		array_b[i] = array_b[i - 1];
+		(*list).array_b[i] = (*list).array_b[i - 1];
 		i--;
 	}
-	i = *size_a;
-	array_b[0] = swap;
+	i = (*list).size_a;
+	(*list).array_b[0] = swap;
 	if(command[0] == '-')
 		return ; 
 	if(option == BENCH)
