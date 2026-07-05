@@ -56,44 +56,44 @@ void ft_big_small(int *array, int size, t_big_small *list)
         int big_i
 */
 
-void ft_three_sort_2(int *array_a, int size_a, t_big_small list, short option)
+void ft_three_sort_2(t_arrays *list, t_big_small var, short option)
 {
-	if(list.big_i == 1 && list.small_i == 0)
+	if(var.big_i == 1 && var.small_i == 0)
 	{
-		ft_rra(array_a, size_a, "rra\n", option);
-		ft_swap(array_a, "sa\n", option);
+		ft_rra(list, "rra\n", option);
+		ft_swap((*list).array_a, "sa\n", option);
 		return ;	
 	}	
-	if(list.big_i == 0 && list.small_i == 2)
+	if(var.big_i == 0 && var.small_i == 2)
 	{
-		ft_swap(array_a, "sa\n", option);
-		ft_rra(array_a, size_a, "rra\n", option);
+		ft_swap((*list).array_a, "sa\n", option);
+		ft_rra(list, "rra\n", option);
 		return ;	
 	}	
 }
-void ft_three_sort(int *array_a, int size_a, short option)
+void ft_three_sort(t_arrays list, short option)
 {
-	t_big_small list;
+	t_big_small var;
 
-	ft_big_small(array_a, size_a, &list);
-	if(list.big_i == 2 && list.small_i == 0)
+	ft_big_small(list.array_a, list.size_a, &var);
+	if(var.big_i == 2 && var.small_i == 0)
 		return ;
-	if(list.big_i == 0 && list.small_i == 1)
+	if(var.big_i == 0 && var.small_i == 1)
 	{
-		ft_ra(array_a, size_a, "ra\n", option);
+		ft_ra(&list, "ra\n", option);
 		return ;	
 	}	
-	if(list.big_i == 1 && list.small_i == 2)
+	if(var.big_i == 1 && var.small_i == 2)
 	{
-		ft_rra(array_a, size_a, "rra\n", option);
+		ft_rra(&list, "rra\n", option);
 		return ;	
 	}	
-	if(list.big_i == 2 && list.small_i == 1)
+	if(var.big_i == 2 && var.small_i == 1)
 	{
-		ft_swap(array_a, "sa\n", option);
+		ft_swap(list.array_a, "sa\n", option);
 		return ;	
 	}
-	ft_three_sort_2(array_a, size_a, list, option);
+	ft_three_sort_2(&list ,var, option);
 }
 
 
@@ -112,12 +112,12 @@ void five_sort(t_arrays list, short option)
 		if ((list.array_a[0] != smallest && list.size_a > 3))
 		{
 			if(small_i <= (list.size_a / 2))
-				ft_ra(list.array_a, list.size_a, "ra\n", option);
+				ft_ra(&list, "ra\n", option);
 			else
-				ft_rra(list.array_a, list.size_a, "rra\n", option);
+				ft_rra(&list, "rra\n", option);
 		}
 	}
-	ft_three_sort(list.array_a, list.size_a, option);
+	ft_three_sort(list, option);
 	while(list.size_b)
 		ft_pb(&list, "pa\n", option);
 	return ;

@@ -6,7 +6,7 @@
 /*   By: ammirzae <ammirzae@student.42vienna.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 14:24:16 by ammirzae          #+#    #+#             */
-/*   Updated: 2026/07/05 12:32:04 by ammirzae         ###   ########.fr       */
+/*   Updated: 2026/07/05 13:30:25 by ammirzae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -37,6 +37,7 @@ int	main(int argc, char **argv)
 //	main_flag = 0;
 //	option_flag = 0;
 //	(void)option_flag;
+	s_flag.option_flag = 0;
 	
 	if (argc < 2)
 	{
@@ -75,8 +76,6 @@ int	main(int argc, char **argv)
 		}
 		i++;
 	}
-//	s_flag.option_flag = 0;
-	printf("size:%d\n", size);
 	if(s_flag.main_flag == SIMPLE)
 	{
 		bubble_main(array, size, s_flag.option_flag);

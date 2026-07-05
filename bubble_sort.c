@@ -87,9 +87,9 @@ void	ft_bubble(t_arrays list, short option)
 		if ((list.array_a[0] != smallest))
 		{
 			if(small_i <= (list.size_a / 2))
-				ft_ra(list.array_a, list.size_a, "ra\n", option);
+				ft_ra(&list, "ra\n", option);
 			else
-				ft_rra(list.array_a, list.size_a, "rra\n", option);
+				ft_rra(&list, "rra\n", option);
 		}
 	
 		if(0 == ft_sort(list.array_a, list.size_a))

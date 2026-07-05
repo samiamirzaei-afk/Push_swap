@@ -1,43 +1,45 @@
 #include "push.h"
 
-void	ft_ra(int *array_a, int size, char *command, short option)
+void	ft_ra(t_arrays *list, char *command, short option)
 {
 	int temp;
 	int i;
+	int size;
 
+	size = (*list).size_a + (*list).size_b;
 	i = 0;
-	temp = array_a[0];
+	temp = (*list).array_a[0];
 
-	while(i < size - 1)
+	while(i < (*list).size_a - 1)
 	{
-		array_a[i] = array_a[i + 1];
+		(*list).array_a[i] = (*list).array_a[i + 1];
 		i++;
 	}
-	array_a[i] = temp;
+	(*list).array_a[i] = temp;
 	if(command[0] == '-')
             return ;
 	if(option == BENCH)
 	{
-		write(2, command, 4);
+		write(2, command, 3);
 		return ;
 	}
-	write(1, command, 4);
+	write(1, command, 3);
 }
 
-void	ft_rra(int *array_a, int size, char *command, short option)
+void	ft_rra(t_arrays *list, char *command, short option)
 {
 	int temp;
 	int i;
 
-	i = size;
-	temp = array_a[size - 1];
+	i = (*list).size_a + (*list).size_b;
+	temp = (*list).array_a[(*list).size_a - 1];
 
 	while(0 < i)
 	{
-		array_a[i] = array_a[i - 1];
+		(*list).array_a[i] = (*list).array_a[i - 1];
 		i--;
 	}
-	array_a[0] = temp;
+	(*list).array_a[0] = temp;
 	if(command[0] == '-')
 			return ; 
 	if(option == BENCH)
@@ -74,7 +76,7 @@ void	ft_pa(t_arrays *list, char *command, short option)
 	(*list).array_b[0] = 0;
 	((*list).size_b)--;
 	((*list).size_a)++;
-	ft_ra((*list).array_b, ((*list).size_a + (*list).size_b), "-", option);
+	ft_ra(list, "-", option);
 	i = (*list).size_a;
 	while(0 < i && ( (*list).size_a != 0 && (*list).size_b != 0))
 	{
@@ -101,7 +103,7 @@ void	ft_pb(t_arrays *list, char *command, short option)
 	(*list).array_a[0] = 0;
 	((*list).size_a)--;
 	((*list).size_b)++;
-	ft_ra((*list).array_a, ((*list).size_a + (*list).size_b), "-", option);
+	ft_ra(list, "-", option);
 	i = (*list).size_b;
 	while(0 < i && ( (*list).size_a != 0 && (*list).size_b != 0))
 	{

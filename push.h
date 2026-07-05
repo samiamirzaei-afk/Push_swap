@@ -109,16 +109,16 @@ typedef struct s_five
 
 
 
-/* rra_ra_sa_pa.c */
-void	ft_ra(int *array_a, int size, char *command, short option);
-void	ft_rra(int *array_a, int size, char *command, short option);
-void	ft_swap(int *array, char* command, short option);
+/* rra_ra_sa_pa_pb.c */
+void	ft_ra(t_arrays *list, char *command, short option);
+void	ft_rra(t_arrays *list, char *command, short option);
+void	ft_swap(int *array, char *command, short option);
 void	ft_pa(t_arrays *list, char *command, short option);
 void	ft_pb(t_arrays *list, char *command, short option);
 
 /* five_sort */
 void	ft_big_small(int *array, int size, t_big_small *list); 
-void	ft_three_sort(int *array_a, int size_a, short option);
+void	ft_three_sort(t_arrays list, short option);
 void	five_sort(t_arrays list, short option);
 
 /* disorder.c */ 
