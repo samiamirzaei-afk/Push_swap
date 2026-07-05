@@ -72,14 +72,13 @@ void	ft_bubble(t_arrays list, short option)
 {
 	int smallest;
 	int small_i;
-	int size_b;
-
-	size_b = 0;
+	
+	
 	while(1)
 	{
 		smallest = ft_small(list.array_a, list.size_a, &small_i);
 		if((list.size_a >= 2) && list.array_a[0] > list.array_a[1])
-			ft_swap(list.array_a, "sa\n", option);
+				ft_swap(list.array_a, "sa\n", option);
 		if(list.array_a[0] == smallest)
 			ft_pb(&list, "pb\n", option);
 		if(list.size_a == 0)
@@ -92,11 +91,12 @@ void	ft_bubble(t_arrays list, short option)
 			else
 				ft_rra(list.array_a, list.size_a, "rra\n", option);
 		}
+	
 		if(0 == ft_sort(list.array_a, list.size_a))
 			break;
 	}
-	while(size_b)
-		ft_pb(&list, "pa\n", option);
+	while(list.size_b)
+		ft_pa(&list, "pa\n", option);
 	return ;
 }
 
@@ -116,13 +116,14 @@ void	bubble_main(int *array_oa, int size, short option)
 	}
 	list.array_a = array_oa;
 	list.size_a = size;
+	list.size_b = 0;
 	if(size <= 5)
 		five_sort(list, option);
 	else
-//	ft_show_two(array_a, array_b, size);
+//	ft_show_two(list.array_a, list.array_b, list.size_a);
 		ft_bubble(list, option);
-//	ft_show_two(array_a, array_b, size);
-//	ft_show_one(array_a, size);
+//	ft_show_two(list.array_a, list.array_b, list.size_a);
+//	ft_show_one(list.array_a, list.size_a);
 	free(list.array_a);
 	free(list.array_b);
 }

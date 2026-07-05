@@ -1,4 +1,4 @@
-NAME = a.bug
+NAME = q.bug
 
 CFLAGS = -Wall -Wextra
 
