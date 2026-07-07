@@ -74,22 +74,36 @@ void	ft_bubble(t_arrays list, short option)
 	int small_i;
 	
 	
+	ft_show_two(list.array_a, list.array_b, list.size_a + list.size_b);
 	while(1)
 	{
 		smallest = ft_small(list.array_a, list.size_a, &small_i);
 		if((list.size_a >= 2) && list.array_a[0] > list.array_a[1])
-				ft_swap(list.array_a, "sa\n", option);
+		{
+			ft_swap(list.array_a, "sa\n", option);
+	ft_show_two(list.array_a, list.array_b, list.size_a + list.size_b);
+		}
 		if(list.array_a[0] == smallest)
+		{
 			ft_pb(&list, "pb\n", option);
+	ft_show_two(list.array_a, list.array_b, list.size_a + list.size_b);
+		}
 		if(list.size_a == 0)
 			break ;
 		smallest = ft_small(list.array_a, list.size_a, &small_i);
 		if ((list.array_a[0] != smallest))
 		{
 			if(small_i <= (list.size_a / 2))
+			{	
 				ft_ra(&list, "ra\n", option);
+	ft_show_two(list.array_a, list.array_b, list.size_a + list.size_b);
+
+			}
 			else
+			{	
 				ft_rra(&list, "rra\n", option);
+	ft_show_two(list.array_a, list.array_b, list.size_a + list.size_b);
+			}
 		}
 	
 		if(0 == ft_sort(list.array_a, list.size_a))

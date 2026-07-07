@@ -102,6 +102,7 @@ void five_sort(t_arrays list, short option)
 	int smallest;
 	int small_i;
 
+	ft_show_one(list.array_a, list.size_a + list.size_b);
 	list.size_b = 0;
 	while(list.size_a > 3)
 	{
@@ -119,6 +120,7 @@ void five_sort(t_arrays list, short option)
 	}
 	ft_three_sort(list, option);
 	while(list.size_b)
-		ft_pb(&list, "pa\n", option);
+		ft_pa(&list, "pa\n", option);
+	ft_show_one(list.array_a, list.size_a + list.size_b);
 	return ;
 }

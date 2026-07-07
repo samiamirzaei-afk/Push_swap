@@ -6,11 +6,14 @@ void	ft_ra(t_arrays *list, char *command, short option)
 	int i;
 	int size;
 
-	size = (*list).size_a + (*list).size_b;
+	size = (*list).size_a;
+	if(command[0] == '-')
+		size = (*list).size_a + (*list).size_b;
 	i = 0;
 	temp = (*list).array_a[0];
+	printf("size of array in ft_ra:%d\n", size);
 
-	while(i < (*list).size_a - 1)
+	while(i < size - 1)
 	{
 		(*list).array_a[i] = (*list).array_a[i + 1];
 		i++;
@@ -31,11 +34,12 @@ void	ft_rra(t_arrays *list, char *command, short option)
 	int temp;
 	int i;
 
-	i = (*list).size_a + (*list).size_b;
+	i = (*list).size_a - 1;
 	temp = (*list).array_a[(*list).size_a - 1];
-
+	printf("i:%d\n", i);
 	while(0 < i)
 	{
+		printf("array_a[%d]:%d = array_[%d]: %d\n ", i, (*list).array_a[i], i - 1, (*list).array_a[i - 1]);
 		(*list).array_a[i] = (*list).array_a[i - 1];
 		i--;
 	}
