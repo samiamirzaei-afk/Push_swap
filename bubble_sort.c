@@ -68,7 +68,7 @@ int ft_small(int *array, int size, int *small_i)
 	return(small);
 }
 
-void	ft_bubble(t_arrays list, short option)
+void	ft_bubble(t_arrays list, short option, t_ops **all_ops)
 {
 	int smallest;
 	int small_i;
@@ -79,42 +79,29 @@ void	ft_bubble(t_arrays list, short option)
 	{
 		smallest = ft_small(list.array_a, list.size_a, &small_i);
 		if((list.size_a >= 2) && list.array_a[0] > list.array_a[1])
-		{
-			ft_swap(list.array_a, "sa\n", option);
-	ft_show_two(list.array_a, list.array_b, list.size_a + list.size_b);
-		}
+			ft_swap(list.array_a, "sa\n", option, all_ops);
 		if(list.array_a[0] == smallest)
-		{
-			ft_pb(&list, "pb\n", option);
-	ft_show_two(list.array_a, list.array_b, list.size_a + list.size_b);
-		}
+			ft_pb(&list, "pb\n", option, all_ops);
 		if(list.size_a == 0)
 			break ;
 		smallest = ft_small(list.array_a, list.size_a, &small_i);
 		if ((list.array_a[0] != smallest))
 		{
 			if(small_i <= (list.size_a / 2))
-			{	
-				ft_ra(&list, "ra\n", option);
-	ft_show_two(list.array_a, list.array_b, list.size_a + list.size_b);
-
-			}
+				ft_ra(&list, "ra\n", option, all_ops);
 			else
-			{	
-				ft_rra(&list, "rra\n", option);
-	ft_show_two(list.array_a, list.array_b, list.size_a + list.size_b);
-			}
+				ft_rra(&list, "rra\n", option, all_ops);
 		}
 	
 		if(0 == ft_sort(list.array_a, list.size_a))
 			break;
 	}
 	while(list.size_b)
-		ft_pa(&list, "pa\n", option);
+		ft_pa(&list, "pa\n", option, all_ops);
 	return ;
 }
 
-void	bubble_main(int *array_oa, int size, short option)
+void	bubble_main(int *array_oa, int size, short option, t_ops **all_ops)
 {
 	t_arrays list;
 	int i;
@@ -132,10 +119,10 @@ void	bubble_main(int *array_oa, int size, short option)
 	list.size_a = size;
 	list.size_b = 0;
 	if(size <= 5)
-		five_sort(list, option);
+		five_sort(list, option, all_ops);
 	else
 //	ft_show_two(list.array_a, list.array_b, list.size_a);
-		ft_bubble(list, option);
+		ft_bubble(list, option, all_ops);
 //	ft_show_two(list.array_a, list.array_b, list.size_a);
 //	ft_show_one(list.array_a, list.size_a);
 	free(list.array_a);

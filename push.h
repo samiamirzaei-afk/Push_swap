@@ -110,16 +110,16 @@ typedef struct s_five
 
 
 /* rra_ra_sa_pa_pb.c */
-void	ft_ra(t_arrays *list, char *command, short option);
-void	ft_rra(t_arrays *list, char *command, short option);
-void	ft_swap(int *array, char *command, short option);
-void	ft_pa(t_arrays *list, char *command, short option);
-void	ft_pb(t_arrays *list, char *command, short option);
+void	ft_ra(t_arrays *list, char *command, short option, t_ops **all_ops);
+void	ft_rra(t_arrays *list, char *command, short option, t_ops **all_ops);
+void	ft_swap(int *array, char *command, short option, t_ops **all_ops);
+void	ft_pa(t_arrays *list, char *command, short option, t_ops **all_ops);
+void	ft_pb(t_arrays *list, char *command, short option, t_ops **all_ops);
 
 /* five_sort */
 void	ft_big_small(int *array, int size, t_big_small *list); 
-void	ft_three_sort(t_arrays list, short option);
-void	five_sort(t_arrays list, short option);
+void	ft_three_sort(t_arrays list, short option, t_ops **all_ops);
+void	five_sort(t_arrays list, short option, t_ops **all_ops);
 
 /* disorder.c */ 
 int ft_sort(int *array, int size);
@@ -129,8 +129,8 @@ float ft_disorder(int *array, int size);
 void	ft_show_two(int *array_a, int *array_b, int size);
 void	ft_show_one(int *arraya, int size);
 int	ft_small(int *array, int size, int *small_i);
-void	ft_bubble(t_arrays list, short option);
-void	bubble_main(int *array_a, int size, short option);
+void	ft_bubble(t_arrays list, short option, t_ops **all_ops);
+void	bubble_main(int *array_a, int size, short option, t_ops **all_ops);
 
 /* ??? */
 int	list_maker(int *array, int size, t_list **head);

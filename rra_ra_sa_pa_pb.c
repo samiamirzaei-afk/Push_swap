@@ -1,6 +1,6 @@
 #include "push.h"
 
-void	ft_ra(t_arrays *list, char *command, short option)
+void	ft_ra(t_arrays *list, char *command, short option, t_ops **all_ops)
 {
 	int temp;
 	int i;
@@ -21,13 +21,14 @@ void	ft_ra(t_arrays *list, char *command, short option)
             return ;
 	if(option == BENCH)
 	{
+		(*all_ops)->ra++;
 		write(2, command, 3);
 		return ;
 	}
 	write(1, command, 3);
 }
 
-void	ft_rra(t_arrays *list, char *command, short option)
+void	ft_rra(t_arrays *list, char *command, short option, t_ops **all_ops)
 {
 	int temp;
 	int i;
@@ -45,13 +46,14 @@ void	ft_rra(t_arrays *list, char *command, short option)
 			return ; 
 	if(option == BENCH)
 	{
+		(*all_ops)->rra++;
 		write(2, command, 4);
 		return ;
 	}
 	write(1, command, 4);
 }
 
-void ft_swap(int *array, char *command, short option)
+void ft_swap(int *array, char *command, short option, t_ops **all_ops)
 {
 	int temp;
 
@@ -60,13 +62,14 @@ void ft_swap(int *array, char *command, short option)
 	array[1] = temp;
 	if(option == BENCH)
 	{
+		(*all_ops)->sa++;
 		write(2, command, 3);
 		return ;
 	}
 	write(1, command, 3);
 }
 
-void	ft_pa(t_arrays *list, char *command, short option)
+void	ft_pa(t_arrays *list, char *command, short option, t_ops **all_ops)
 {
 	int i;
 	int swap;
@@ -77,7 +80,7 @@ void	ft_pa(t_arrays *list, char *command, short option)
 	(*list).array_b[0] = 0;
 	((*list).size_b)--;
 	((*list).size_a)++;
-	ft_ra(list, "-", option);
+	ft_ra(list, "-", option, all_ops);
 	i = (*list).size_a;
 	while(0 < i && ( (*list).size_a != 0 && (*list).size_b != 0))
 	{
@@ -88,12 +91,13 @@ void	ft_pa(t_arrays *list, char *command, short option)
 	(*list).array_a[0] = swap;
 	if(option == BENCH)
 	{
+		(*all_ops)->pa++;
 		write(2, command, 3);
 		return ;
 	}
 	write(1, command, 3);
 }
-void	ft_pb(t_arrays *list, char *command, short option)
+void	ft_pb(t_arrays *list, char *command, short option, t_ops **all_ops)
 {
 	int i;
 	int swap;
@@ -104,7 +108,7 @@ void	ft_pb(t_arrays *list, char *command, short option)
 	(*list).array_a[0] = 0;
 	((*list).size_a)--;
 	((*list).size_b)++;
-	ft_ra(list, "-", option);
+	ft_ra(list, "-", option, all_ops);
 	i = (*list).size_b;
 	while(0 < i && ( (*list).size_a != 0 && (*list).size_b != 0))
 	{
@@ -115,6 +119,7 @@ void	ft_pb(t_arrays *list, char *command, short option)
 	(*list).array_b[0] = swap;
 	if(option == BENCH)
 	{
+		(*all_ops)->pb++;
 		write(2, command, 3);
 		return ;
 	}

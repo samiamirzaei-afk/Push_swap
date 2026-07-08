@@ -56,22 +56,22 @@ void ft_big_small(int *array, int size, t_big_small *list)
         int big_i
 */
 
-void ft_three_sort_2(t_arrays *list, t_big_small var, short option)
+void ft_three_sort_2(t_arrays *list, t_big_small var, short option, t_ops **all_ops)
 {
 	if(var.big_i == 1 && var.small_i == 0)
 	{
-		ft_rra(list, "rra\n", option);
-		ft_swap((*list).array_a, "sa\n", option);
+		ft_rra(list, "rra\n", option, all_ops);
+		ft_swap((*list).array_a, "sa\n", option, all_ops);
 		return ;	
 	}	
 	if(var.big_i == 0 && var.small_i == 2)
 	{
-		ft_swap((*list).array_a, "sa\n", option);
-		ft_rra(list, "rra\n", option);
+		ft_swap((*list).array_a, "sa\n", option, all_ops);
+		ft_rra(list, "rra\n", option, all_ops);
 		return ;	
 	}	
 }
-void ft_three_sort(t_arrays list, short option)
+void ft_three_sort(t_arrays list, short option, t_ops **all_ops)
 {
 	t_big_small var;
 
@@ -80,47 +80,47 @@ void ft_three_sort(t_arrays list, short option)
 		return ;
 	if(var.big_i == 0 && var.small_i == 1)
 	{
-		ft_ra(&list, "ra\n", option);
+		ft_ra(&list, "ra\n", option, all_ops);
 		return ;	
 	}	
 	if(var.big_i == 1 && var.small_i == 2)
 	{
-		ft_rra(&list, "rra\n", option);
+		ft_rra(&list, "rra\n", option, all_ops);
 		return ;	
 	}	
 	if(var.big_i == 2 && var.small_i == 1)
 	{
-		ft_swap(list.array_a, "sa\n", option);
+		ft_swap(list.array_a, "sa\n", option, all_ops);
 		return ;	
 	}
-	ft_three_sort_2(&list ,var, option);
+	ft_three_sort_2(&list ,var, option, all_ops);
 }
 
 
-void five_sort(t_arrays list, short option)
+void five_sort(t_arrays list, short option, t_ops **all_ops)
 {
 	int smallest;
 	int small_i;
 
-	ft_show_one(list.array_a, list.size_a + list.size_b);
+//	ft_show_one(list.array_a, list.size_a + list.size_b, all_ops);
 	list.size_b = 0;
 	while(list.size_a > 3)
 	{
 		smallest = ft_small(list.array_a, list.size_a, &small_i);
 		if(list.array_a[0] == smallest)
-			ft_pb(&list, "pb\n", option);
+			ft_pb(&list, "pb\n", option, all_ops);
 		smallest = ft_small(list.array_a, list.size_a, &small_i);
 		if ((list.array_a[0] != smallest && list.size_a > 3))
 		{
 			if(small_i <= (list.size_a / 2))
-				ft_ra(&list, "ra\n", option);
+				ft_ra(&list, "ra\n", option, all_ops);
 			else
-				ft_rra(&list, "rra\n", option);
+				ft_rra(&list, "rra\n", option, all_ops);
 		}
 	}
-	ft_three_sort(list, option);
+	ft_three_sort(list, option, all_ops);
 	while(list.size_b)
-		ft_pa(&list, "pa\n", option);
+		ft_pa(&list, "pa\n", option, all_ops);
 	ft_show_one(list.array_a, list.size_a + list.size_b);
 	return ;
 }

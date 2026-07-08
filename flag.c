@@ -8,6 +8,18 @@
 --bench = 5
 */
 
+void ft_flag_set_zero(short *flag)
+{
+	int i;
+
+	i = 0;
+	while(i <= FLAG_SIZE)
+	{
+		flag[i] = 0;
+		i++;
+	}
+}
+
 int flag_logic2(short *flags, short main, int i)
 {
 	if(main == 0)
@@ -87,6 +99,7 @@ int ft_flag(char **argv, short *flags)
 
 	i = 1;
 	k = 0;
+	ft_flag_set_zero(flags);
 	while(argv[i] != NULL)
 	{
 			flags[k] = ft_found_flag(argv[i]);

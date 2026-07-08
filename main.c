@@ -78,7 +78,8 @@ int	main(int argc, char **argv)
 	}
 	if(s_flag.main_flag == SIMPLE)
 	{
-		bubble_main(array, size, s_flag.option_flag);
+		bubble_main(array, size, s_flag.option_flag, &all_ops );
+		ft_print_ops(&all_ops);
 		free(all_ops);
 		return(1);
 	}
