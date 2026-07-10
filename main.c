@@ -65,15 +65,9 @@ int	main(int argc, char **argv)
 	while(i < FLAG_SIZE)
 	{
 		if(s_flag.flags[i] == BENCH)
-		{
 			s_flag.option_flag = s_flag.flags[i];
-//			i++;
-		}
 		if(s_flag.flags[i] >= ADAPTIVE && s_flag.flags[i] <= SIMPLE )
-		{
 			s_flag.main_flag = s_flag.flags[i];
-//			i++;
-		}
 		i++;
 	}
 	printf("option:%d main:%d\n", s_flag.option_flag, s_flag.main_flag);
@@ -81,6 +75,7 @@ int	main(int argc, char **argv)
 	{
 		bubble_main(array, size, s_flag.option_flag, &all_ops );
 		ft_print_ops(&all_ops);
+		bench_print(dis, SIM, all_ops);
 		free(all_ops);
 		return(1);
 	}

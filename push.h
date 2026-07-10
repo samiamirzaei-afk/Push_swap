@@ -143,6 +143,9 @@ void	ft_lstdelone(t_list *trash, void (*del)(void*));
 void	ft_lstclear(t_list **head);
 void	ft_lstiter(t_list *list, void (*f)(void *));
 
+/* bench_print.c */
+void	bench_print(float dis, char *command, t_ops *all_ops);
+
 
 /*
 --adaptive = 1
