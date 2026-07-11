@@ -45,28 +45,36 @@ int	ft_putnbr_fd(int nb, int fd)
 		return (-1);
 	return (count);
 }
-/*
+
 int	ft_putflo(float nb)
 {
 	int		i;
 	int		count;
-	char	digit_buffer[12];
+	char	digit_buffer[9];
 
 	count = 0;
+	i = 2;
 	digit_buffer[0] = '\0';
-	i = 1;
-	while (nb > 9)
+	digit_buffer[1] = '%';
+	nb = nb * 10000;
+	count = nb;
+	while (count > 9)
 	{
-		digit_buffer[i] = (nb % 10) + '0';
-		nb /= 10;
+		if(i == 4)
+		{
+			digit_buffer[i] = '.';
+			i++;
+		}
+		digit_buffer[i] = (count % 10) + '0';
+		count /= 10;
 		i++;
 	}
-	digit_buffer[i] = nb + '0';
-	if (ft_show_nbr(&count, &i, digit_buffer) == -1)
+	digit_buffer[i] = count + '0';
+	if (ft_show_nbr(&count, &i, digit_buffer, 2) == -1)
 		return (-1);
 	return (count);
 }
-*/
+
 /*
 typedef struct s_op
 {
@@ -128,7 +136,7 @@ void bench_print(float dis, char *command, t_ops *all_ops)
 	int total_ops;
 
 	write(2, "[bench] disorder:  ", 19);
-	ft_putnbr_fd(dis, 2);	
+	ft_putflo(dis);	
 	write(2, "\n", 1);
 	write(2, "[bench] strategy:  ", 19);
 	write(2, command, ft_strlen(command));
