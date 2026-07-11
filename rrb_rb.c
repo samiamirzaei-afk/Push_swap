@@ -1,6 +1,6 @@
 #include "push.h"
 
-void	ft_rb(t_arrays *list, char *command, short option)
+void	ft_rb(t_arrays *list, char *command, short option, t_ops **all_ops)
 {
 	int temp;
 	int i;
@@ -21,13 +21,13 @@ void	ft_rb(t_arrays *list, char *command, short option)
             return ;
 	if(option == BENCH)
 	{
-		write(2, command, 3);
+		(*all_ops)->rb++;
 		return ;
 	}
 	write(1, command, 3);
 }
 
-void	ft_rrb(t_arrays *list, char *command, short option)
+void	ft_rrb(t_arrays *list, char *command, short option, t_ops **all_ops)
 {
 	int temp;
 	int i;
@@ -44,7 +44,7 @@ void	ft_rrb(t_arrays *list, char *command, short option)
 			return ; 
 	if(option == BENCH)
 	{
-		write(2, command, 4);
+		(*all_ops)->rrb++;
 		return ;
 	}
 	write(1, command, 4);
