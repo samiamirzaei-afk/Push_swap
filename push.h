@@ -97,6 +97,14 @@ typedef enum e_flag
     BENCH
 }   t_flag;
 
+/*
+--adaptive = 1
+--complex = 2
+--mediu	= 3
+--simple = 4
+--bench = 5
+*/
+
 typedef struct s_list
 {
 	int		num;
@@ -152,13 +160,6 @@ void	ft_lstiter(t_list *list, void (*f)(void *));
 void	bench_print(float dis, char *command, t_ops *all_ops);
 
 
-/*
---adaptive = 1
---complex = 2
---mediu	= 3
---simple = 4
---bench = 5
-*/
 #endif
 
 

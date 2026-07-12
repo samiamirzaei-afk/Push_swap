@@ -44,12 +44,15 @@ float ft_disorder(int *array, int size)
 		j = i + 1;
 		while(j < size)
 		{
+//			printf("comparing [%d] with [%d]: %d | %d\n",i , i + 1, array[i], array[j]);
 			if(array[i] > array[j])
 				mistake++;
 			size_f++;
 			j++;
 		}
+//		printf("comparing [%d] with [%d]: %d | %d\n",i , i + 1, array[i], array[i+1]);
 		i++;
 	}
+//	printf("mistake: [%f] / size_f [%f], = %f\n", mistake, size_f - 1, mistake / (size_f));
 	return(mistake / (size_f));
 }

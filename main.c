@@ -9,15 +9,6 @@
 /*   Updated: 2026/07/05 13:30:25 by ammirzae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*
-argv[0] = a.out
-argv[1] = flag
-argv[2] = numebr1
-argv[3] = numebr2
-argv[4] = numebr3
-argv[5] = numebr4
-argv[6] = NULL;
-*/
 #include "push.h" 
 
 int	main(int argc, char **argv)
@@ -26,17 +17,11 @@ int	main(int argc, char **argv)
 	int	*array;
 	int	size;
 	float	dis;
-//       short   flags[FLAG_SIZE + 1];
-//       int     main_flag;
-//       int     option_flag;
 	t_s_flag	s_flag;
 	t_ops	*all_ops;
 	t_list	*head;
 	
 	head = NULL;
-//	main_flag = 0;
-//	option_flag = 0;
-//	(void)option_flag;
 	s_flag.option_flag = 0;
 	
 	if (argc < 2)
