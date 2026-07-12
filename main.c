@@ -59,8 +59,6 @@ int	main(int argc, char **argv)
 	ft_op_to_zero(&all_ops);
 
 	ft_print_ops(&all_ops);
-	if(dis == 0)
-		return(0);
 	i = 0;
 	while(i < FLAG_SIZE)
 	{
@@ -71,11 +69,37 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	printf("option:%d main:%d\n", s_flag.option_flag, s_flag.main_flag);
+
+	if(dis == 0)
+	{
+		if(s_flag.option_flag == BENCH)
+			bench_print(dis, SORT_FULL, all_ops);
+		free(all_ops);
+		free(array);
+		return(0);
+	}
+	
 	if(s_flag.main_flag == SIMPLE)
 	{
 		bubble_main(array, size, s_flag.option_flag, &all_ops );
-		ft_print_ops(&all_ops);
-		bench_print(dis, SIM, all_ops);
+		if(s_flag.option_flag == BENCH)
+			bench_print(dis, SIM_FULL, all_ops);
+		free(all_ops);
+		return(1);
+	}
+	if(s_flag.main_flag == COMPLEX)
+	{
+		bubble_main(array, size, s_flag.option_flag, &all_ops );
+		if(s_flag.option_flag == BENCH)
+			bench_print(dis, COM_FULL, all_ops);
+		free(all_ops);
+		return(1);
+	}
+	if(s_flag.main_flag == MEDIUM)
+	{
+		bubble_main(array, size, s_flag.option_flag, &all_ops );
+		if(s_flag.option_flag == BENCH)
+			bench_print(dis, MED_FULL, all_ops);
 		free(all_ops);
 		return(1);
 	}

@@ -19,6 +19,11 @@
 #define FLAG_SIZE 2
 #endif
 
+#define SORT_FULL "Already sorted\n"
+#define SIM_FULL "Simple  / O(𝑛^2)\n"
+#define MED_FULL "Medium  / O(𝑛√𝑛)\n"
+#define COM_FULL "Simple  / O(𝑛 𝑙𝑜𝑔 𝑛)\n"
+
 typedef struct s_array
 {
 	int	*array_a;

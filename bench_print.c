@@ -140,7 +140,6 @@ void bench_print(float dis, char *command, t_ops *all_ops)
 	write(2, "\n", 1);
 	write(2, "[bench] strategy:  ", 19);
 	write(2, command, ft_strlen(command));
-	write(2, " / O(n^2)\n", 11);
 	write(2, "[bench] total_ops:  ", 20);
 	total_ops = ft_op_count(all_ops);
 	ft_putnbr_fd(total_ops, 2);	
