@@ -22,6 +22,7 @@ void	ft_rb(t_arrays *list, char *command, short option, t_ops **all_ops)
 	if(option == BENCH)
 	{
 		(*all_ops)->rb++;
+		write(1, command, 3);
 		return ;
 	}
 	write(1, command, 3);
@@ -45,6 +46,7 @@ void	ft_rrb(t_arrays *list, char *command, short option, t_ops **all_ops)
 	if(option == BENCH)
 	{
 		(*all_ops)->rrb++;
+		write(1, command, 4);
 		return ;
 	}
 	write(1, command, 4);

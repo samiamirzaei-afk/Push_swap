@@ -20,10 +20,10 @@
 #endif
 
 #define SORT_FULL "Already sorted\n"
-#define SIM_FULL "Simple  / O(𝑛^2)\n"
+#define SIM_FULL "Simple  / O(𝑛²)\n"
 #define MED_FULL "Medium  / O(𝑛√𝑛)\n"
 #define COM_FULL "Complex  / O(𝑛 𝑙𝑜𝑔 𝑛)\n"
-#define ADA_SIM_FULL "Adaptive  / O(𝑛^2)\n"
+#define ADA_SIM_FULL "Adaptive  / O(𝑛²)\n"
 #define ADA_MED_FULL "Adaptive  / O(𝑛√𝑛)\n"
 #define ADA_COM_FULL "Adaptive  / O(𝑛 𝑙𝑜𝑔 𝑛)\n"
 
