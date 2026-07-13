@@ -6,7 +6,7 @@
 /*   By: ammirzae <ammirzae@student.42vienna.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 14:24:16 by ammirzae          #+#    #+#             */
-/*   Updated: 2026/07/05 13:30:25 by ammirzae         ###   ########.fr       */
+/*   Updated: 2026/07/13 08:37:42 by ammirzae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push.h" 
@@ -87,6 +87,33 @@ int	main(int argc, char **argv)
 			bench_print(dis, MED_FULL, all_ops);
 		free(all_ops);
 		return(1);
+	}
+	if(s_flag.main_flag == ADAPTIVE)
+	{
+		if(dis < 0.2)
+		{
+			bubble_main(array, size, s_flag.option_flag, &all_ops);
+			if(s_flag.option_flag == BENCH)
+				bench_print(dis, ADA_SIM_FULL, all_ops);
+		free(all_ops);
+		return(1);
+		}
+		if(dis >= 0.2 && dis < 0.5)
+		{
+			bubble_main(array, size, s_flag.option_flag, &all_ops);
+			if(s_flag.option_flag == BENCH)
+				bench_print(dis, ADA_MED_FULL, all_ops);
+		free(all_ops);
+		return(1);
+		}
+		if(dis >= 0.5)
+		{
+			bubble_main(array, size, s_flag.option_flag, &all_ops);
+			if(s_flag.option_flag == BENCH)
+				bench_print(dis, ADA_COM_FULL, all_ops);
+		free(all_ops);
+		return(1);
+		}
 	}
 
 	if(list_maker(array, size, &head) == 0)

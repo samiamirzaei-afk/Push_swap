@@ -69,6 +69,11 @@ int	ft_putflo(float nb)
 		count /= 10;
 		i++;
 	}
+	if(i == 4)
+	{
+		digit_buffer[i] = '.';
+		i++;
+	}
 	digit_buffer[i] = count + '0';
 	if (ft_show_nbr(&count, &i, digit_buffer, 2) == -1)
 		return (-1);
