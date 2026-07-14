@@ -46,6 +46,30 @@ int	ft_putnbr_fd(int nb, int fd)
 	return (count);
 }
 
+void ft_low_per(int count)
+{
+	char dig[4];
+
+	dig[3] = '\0';
+	dig[2] = '%';
+	dig[1] = (count % 10) + '0';
+	count = count / 10;
+	dig[0] = count + '0';
+	write(2, "0.", 2);
+	write(2, &dig, 3);
+}
+
+void ft_lowest_per(int count)
+{
+	char dig[3];
+
+	dig[0] = count + '0';
+	dig[1] = '%';
+	dig[2] = '\0';
+	write(2, "0.0", 3);
+	write(2, &dig, 3);
+}
+
 int	ft_putflo(float nb)
 {
 	int		i;
@@ -58,6 +82,20 @@ int	ft_putflo(float nb)
 	digit_buffer[1] = '%';
 	nb = nb * 10000;
 	count = nb;
+	if(count == 0)
+	{
+		return(write(2, "0%", 2));	
+	}
+	if(count < 10)
+	{
+		ft_lowest_per(count);
+		return(count);
+	}
+	if(count < 100)
+	{
+		ft_low_per(count);
+		return(count);
+	}
 	while (count > 9)
 	{
 		if(i == 4)
@@ -108,20 +146,10 @@ int ft_op_count(t_ops *all_ops)
 }
 //sa:  0  sb:  0  ss:  0  pa:  5  pb:  6
 //ra:  2  rb:  1  rr:  5  rra:  6  rrb:  8  rrr: 9
-void ft_all_ops(t_ops *all_ops)
+
+
+void ft_all_ops2(t_ops *all_ops)
 {
-	write(2, "[bench] sa:  ", 13);
-	ft_putnbr_fd(all_ops->sa, 2);
-	write(2, "  sb:  ", 7);
-	ft_putnbr_fd(all_ops->sb, 2);
-	write(2, "  ss:  ", 7);
-	ft_putnbr_fd(all_ops->ss, 2);
-	write(2, "  pa:  ", 7);
-	ft_putnbr_fd(all_ops->pa, 2);
-	write(2, "  pb:  ", 7);
-	ft_putnbr_fd(all_ops->pb, 2);
-	write(2, "\n", 1);
-	
 	write(2, "[bench] ra:  ", 13);
 	ft_putnbr_fd(all_ops->ra, 2);
 	write(2, "  rb:  ", 7);
@@ -135,6 +163,22 @@ void ft_all_ops(t_ops *all_ops)
 	write(2, "  rrr:  ", 8);
 	ft_putnbr_fd(all_ops->rrr, 2);
 	write(2, "\n", 1);
+}
+
+void ft_all_ops(t_ops *all_ops)
+{
+	write(2, "[bench] sa:  ", 13);
+	ft_putnbr_fd(all_ops->sa, 2);
+	write(2, "  sb:  ", 7);
+	ft_putnbr_fd(all_ops->sb, 2);
+	write(2, "  ss:  ", 7);
+	ft_putnbr_fd(all_ops->ss, 2);
+	write(2, "  pa:  ", 7);
+	ft_putnbr_fd(all_ops->pa, 2);
+	write(2, "  pb:  ", 7);
+	ft_putnbr_fd(all_ops->pb, 2);
+	write(2, "\n", 1);
+	ft_all_ops2(all_ops);
 }
 void bench_print(float dis, char *command, t_ops *all_ops)
 {
@@ -150,7 +194,5 @@ void bench_print(float dis, char *command, t_ops *all_ops)
 	ft_putnbr_fd(total_ops, 2);	
 	write(2, "\n", 1);
 	ft_all_ops(all_ops);
-	
-
 
 }

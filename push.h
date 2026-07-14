@@ -30,11 +30,18 @@
 typedef struct s_array
 {
 	int	*array_a;
-	int *array_b;
+	int 	*array_b;
 	int	size_a;
 	int	size_b;
 
 }	t_arrays;
+
+typedef struct s_struct1
+{
+	int	smallest;
+	int	small_i;
+
+}	t_lstsmall;
 
 typedef struct s_flag
 {

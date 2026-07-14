@@ -1,4 +1,5 @@
 #include "push.h"
+
 /*
 	1 2 3
 	
@@ -18,6 +19,8 @@
 	3 2 1 sa
 	2 3 1 ra
 	1 2 3
+	
+	
 */
 
 void ft_big_small(int *array, int size, t_big_small *list) 
@@ -44,6 +47,14 @@ void ft_big_small(int *array, int size, t_big_small *list)
 		i++;
 	}
 }
+
+
+/*
+        int small;
+        int big;
+        int small_i;
+        int big_i
+*/
 
 void ft_three_sort_2(t_arrays *list, t_big_small var, short option, t_ops **all_ops)
 {

@@ -59,40 +59,40 @@ int ft_small(int *array, int size, int *small_i)
 	{
 		if(small > array[i])
 		{
-			small = array[i];	
-			*small_i = i;
+				small = array[i];
+				*small_i = i;
 		}
 		i++;
 	}
+//	printf("\nsmallest: %d\n", smallest);
 	return(small);
-}
-
-void ft_2bubble(t_arrays list, short option, t_ops **all_ops, t_lstsmall ls_sm)
-{
-	if ((list.array_a[0] != ls_sm.smallest))
-	{
-		if(ls_sm.small_i <= (list.size_a / 2))
-			ft_ra(&list, "ra\n", option, all_ops);
-		else
-			ft_rra(&list, "rra\n", option, all_ops);
-	}
 }
 
 void	ft_bubble(t_arrays list, short option, t_ops **all_ops)
 {
-	t_lstsmall ls_sm;
+	int smallest;
+	int small_i;
 	
+	
+	ft_show_two(list.array_a, list.array_b, list.size_a + list.size_b);
 	while(1)
 	{
-		ls_sm.smallest = ft_small(list.array_a, list.size_a, &ls_sm.small_i);
+		smallest = ft_small(list.array_a, list.size_a, &small_i);
 		if((list.size_a >= 2) && list.array_a[0] > list.array_a[1])
 			ft_swap(list.array_a, "sa\n", option, all_ops);
-		if(list.array_a[0] == ls_sm.smallest)
+		if(list.array_a[0] == smallest)
 			ft_pb(&list, "pb\n", option, all_ops);
 		if(list.size_a == 0)
 			break ;
-		ls_sm.smallest = ft_small(list.array_a, list.size_a, &ls_sm.small_i);
-		ft_2bubble(list, option, all_ops, ls_sm);
+		smallest = ft_small(list.array_a, list.size_a, &small_i);
+		if ((list.array_a[0] != smallest))
+		{
+			if(small_i <= (list.size_a / 2))
+				ft_ra(&list, "ra\n", option, all_ops);
+			else
+				ft_rra(&list, "rra\n", option, all_ops);
+		}
+	
 		if(0 == ft_sort(list.array_a, list.size_a))
 			break;
 	}
@@ -128,3 +128,31 @@ void	bubble_main(int *array_oa, int size, short option, t_ops **all_ops)
 	free(list.array_a);
 	free(list.array_b);
 }
+/*
+void	bubble_main(int *array_a, int size, short option)
+{
+	int *array_b;
+	int i;
+	i = 1;
+
+	array_b = malloc((size + 1) * sizeof(int));
+	if(!array_b)
+		free(array_a);
+	while(i < size)
+	{
+		array_b[i] = 0;
+		i++;
+	}
+	i = 0;
+
+	if(size <= 5)
+		five_sort(array_a, array_b, size, option);
+	else
+//	ft_show_two(array_a, array_b, size);
+		ft_bubble(array_a, array_b, size, option);
+//	ft_show_two(array_a, array_b, size);
+//	ft_show_one(array_a, size);
+	free(array_a);
+	free(array_b);
+}
+*/

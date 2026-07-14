@@ -1,5 +1,26 @@
 #include "push.h"
 
+void	ft_fill_array(int argc, char **argv, int **result)
+{
+	int i;
+	int k;
+
+	i = 0;
+	k = 0;
+	while (i < argc)
+	{
+		while(argv[i] && !ft_isdigit_str(argv[i]))
+		{
+			i++;
+		}
+		if(argv[i] == NULL)
+			break;
+		(*result)[k] = ft_atoi(argv[i]);
+		i++;
+		k++;
+	}
+}
+
 int	*ft_argv_to_array(int argc, char **argv, int *size)
 {
 	int i;
@@ -15,36 +36,11 @@ int	*ft_argv_to_array(int argc, char **argv, int *size)
 		i++;
 	}
 	i = 0;
-	
-	printf("size: '%d'\n", (argc - (k)));
 	result = malloc((argc - (k)) *sizeof(int));
 	if(!result)
 		return(NULL);
 	*size = (argc - k);
-	i = 0;
-	k = 0;
-	while (i < argc)
-	{
-		while(argv[i] && !ft_isdigit_str(argv[i]))
-		{
-			i++;
-		}
-		if(argv[i] == NULL)
-			break;
-		result[k] = ft_atoi(argv[i]);
-		i++;
-		k++;
-	}
-	i = 0;
-///*
-	while(i < k)
-	{
-		printf("result[%d]:%d\n", i, result[i]);
-		i++;
-	}
-//*/
-	
+	ft_fill_array(argc, argv, &result);
 	return(result);
-
 }
 
