@@ -77,25 +77,25 @@ void	ft_low_print(int count)
 	}
 }
 
-void	ft_flow_fill(char *digit_buffer, int count, int i)
+void	ft_flow_fill(char *digit_buffer, int count, int *i)
 {
 	while (count > 9)
 	{
-		if(i == 4)
+		if(*i == 4)
 		{
-			digit_buffer[i] = '.';
-			i++;
+			digit_buffer[*i] = '.';
+			(*i)++;
 		}
-		digit_buffer[i] = (count % 10) + '0';
+		digit_buffer[*i] = (count % 10) + '0';
 		count /= 10;
-		i++;
+		(*i)++;
 	}
-	if(i == 4)
+	if(*i == 4)
 	{
-		digit_buffer[i] = '.';
-		i++;
+		digit_buffer[*i] = '.';
+		(*i)++;
 	}
-	digit_buffer[i] = count + '0';
+	digit_buffer[*i] = count + '0';
 }
 void	ft_putflo(float nb)
 {
@@ -111,7 +111,7 @@ void	ft_putflo(float nb)
 	count = nb;
 	if(count < 100)
 		return(ft_low_print(count));
-	ft_flow_fill(digit_buffer, count, i);
+	ft_flow_fill(digit_buffer, count, &i);
 	ft_show_nbr(&i, digit_buffer, 2);
 }
 

@@ -6,23 +6,84 @@
 /*   By: ammirzae <ammirzae@student.42vienna.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 14:24:16 by ammirzae          #+#    #+#             */
-/*   Updated: 2026/07/13 08:37:42 by ammirzae         ###   ########.fr       */
+/*   Updated: 2026/07/15 16:26:07 by ammirzae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push.h" 
 
-int main(int *array,int size)
+int main_2(t_s_flag s_flag, t_ops *all_ops, t_di_ar rest)
+{
+	if(rest.dis == 0)
+	{
+		if(s_flag.option_flag == BENCH)
+			bench_print(rest.dis, SORT_FULL, all_ops);
+		free(all_ops);
+		free(rest.array);
+		return(0);
+	}
+	if(s_flag.main_flag == SIMPLE)
+	{
+		bubble_main(rest.array, rest.size, s_flag.option_flag, &all_ops );
+		if(s_flag.option_flag == BENCH)
+			bench_print(rest.dis, SIM_FULL, all_ops);
+		free(all_ops);
+		return(0);
+	}
+	if(s_flag.main_flag == COMPLEX)
+	{
+		bubble_main(rest.array, rest.size, s_flag.option_flag, &all_ops );
+		if(s_flag.option_flag == BENCH)
+			bench_print(rest.dis, COM_FULL, all_ops);
+		free(all_ops);
+		return(0);
+	}
+	if(s_flag.main_flag == MEDIUM)
+	{
+		bubble_main(rest.array, rest.size, s_flag.option_flag, &all_ops );
+		if(s_flag.option_flag == BENCH)
+			bench_print(rest.dis, MED_FULL, all_ops);
+		free(all_ops);
+		return(0);
+	}
+	if(s_flag.main_flag == ADAPTIVE)
+	{
+		if(rest.dis < 0.2)
+		{
+			bubble_main(rest.array, rest.size, s_flag.option_flag, &all_ops);
+			if(s_flag.option_flag == BENCH)
+				bench_print(rest.dis, ADA_SIM_FULL, all_ops);
+		free(all_ops);
+		return(1);
+		}
+		if(rest.dis >= 0.2 && rest.dis < 0.5)
+		{
+			bubble_main(rest.array, rest.size, s_flag.option_flag, &all_ops);
+			if(s_flag.option_flag == BENCH)
+				bench_print(rest.dis, ADA_MED_FULL, all_ops);
+		free(all_ops);
+		return(1);
+		}
+		if(rest.dis >= 0.5)
+		{
+			bubble_main(rest.array, rest.size, s_flag.option_flag, &all_ops);
+			if(s_flag.option_flag == BENCH)
+				bench_print(rest.dis, ADA_COM_FULL, all_ops);
+		free(all_ops);
+		return(1);
+		}
+	}
+	return(0);
+}
+
+
+
+void main_1(int *array, int size, t_s_flag s_flag)
 {
 	int	i;
-	float	dis;
-	t_s_flag	s_flag;
 	t_ops	*all_ops;
-	t_list	*head;
+	t_di_ar	rest;
 	
-	head = NULL;
-	s_flag.option_flag = 0;
-
-	dis = ft_disorder(array, size);
+	rest.dis = ft_disorder(array, size);
 	ft_op_to_zero(&all_ops);
 	i = 0;
 	while(i < FLAG_SIZE)
@@ -33,90 +94,28 @@ int main(int *array,int size)
 			s_flag.main_flag = s_flag.flags[i];
 		i++;
 	}
-	if(dis == 0)
-	{
-		if(s_flag.option_flag == BENCH)
-			bench_print(dis, SORT_FULL, all_ops);
-		free(all_ops);
-		free(array);
-		return(0);
-	}
-	if(s_flag.main_flag == SIMPLE)
-	{
-		bubble_main(array, size, s_flag.option_flag, &all_ops );
-		if(s_flag.option_flag == BENCH)
-			bench_print(dis, SIM_FULL, all_ops);
-		free(all_ops);
-		return(1);
-	}
-	if(s_flag.main_flag == COMPLEX)
-	{
-		bubble_main(array, size, s_flag.option_flag, &all_ops );
-		if(s_flag.option_flag == BENCH)
-			bench_print(dis, COM_FULL, all_ops);
-		free(all_ops);
-		return(1);
-	}
-	if(s_flag.main_flag == MEDIUM)
-	{
-		bubble_main(array, size, s_flag.option_flag, &all_ops );
-		if(s_flag.option_flag == BENCH)
-			bench_print(dis, MED_FULL, all_ops);
-		free(all_ops);
-		return(1);
-	}
-	if(s_flag.main_flag == ADAPTIVE)
-	{
-		if(dis < 0.2)
-		{
-			bubble_main(array, size, s_flag.option_flag, &all_ops);
-			if(s_flag.option_flag == BENCH)
-				bench_print(dis, ADA_SIM_FULL, all_ops);
-		free(all_ops);
-		return(1);
-		}
-		if(dis >= 0.2 && dis < 0.5)
-		{
-			bubble_main(array, size, s_flag.option_flag, &all_ops);
-			if(s_flag.option_flag == BENCH)
-				bench_print(dis, ADA_MED_FULL, all_ops);
-		free(all_ops);
-		return(1);
-		}
-		if(dis >= 0.5)
-		{
-			bubble_main(array, size, s_flag.option_flag, &all_ops);
-			if(s_flag.option_flag == BENCH)
-				bench_print(dis, ADA_COM_FULL, all_ops);
-		free(all_ops);
-		return(1);
-		}
-	}
+	rest.array = array;
+	rest.size = size;
+	main_2(s_flag, all_ops, rest);
 }
 
 
 int	main(int argc, char **argv)
 {
-	int	i;
 	int	*array;
 	int	size;
-	float	dis;
 	t_s_flag	s_flag;
-	t_ops	*all_ops;
-	t_list	*head;
 	
-	head = NULL;
-	s_flag.option_flag = 0;
 	if (argc < 3)
 		return (1);
+	s_flag.option_flag = 0;
 	size = 0;
 	if((ft_flag(argv, s_flag.flags)) == -1)
 		return(write(1,"Error\n", 6), 1);
 	array = ft_argv_to_array(argc, argv, &size);
 	if(ft_array_check(array, size) == -1)
 		return(write(1,"Error2\n", 7), 1);
-
-	main_1(array, size)
+	main_1(array, size, s_flag);
 }
 /*
 int	main(int argc, char **argv)

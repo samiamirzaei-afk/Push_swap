@@ -36,6 +36,13 @@ typedef struct s_array
 
 }	t_arrays;
 
+typedef struct s_rest_of_stuff
+{
+	int	*array;
+	int	size;
+	float	dis;
+}	t_di_ar;
+
 typedef struct s_struct1
 {
 	int	smallest;
