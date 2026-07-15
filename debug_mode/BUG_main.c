@@ -11,114 +11,6 @@
 /* ************************************************************************** */
 #include "push.h" 
 
-int main(int *array,int size)
-{
-	int	i;
-	float	dis;
-	t_s_flag	s_flag;
-	t_ops	*all_ops;
-	t_list	*head;
-	
-	head = NULL;
-	s_flag.option_flag = 0;
-
-	dis = ft_disorder(array, size);
-	ft_op_to_zero(&all_ops);
-	i = 0;
-	while(i < FLAG_SIZE)
-	{
-		if(s_flag.flags[i] == BENCH)
-			s_flag.option_flag = s_flag.flags[i];
-		if(s_flag.flags[i] >= ADAPTIVE && s_flag.flags[i] <= SIMPLE )
-			s_flag.main_flag = s_flag.flags[i];
-		i++;
-	}
-	if(dis == 0)
-	{
-		if(s_flag.option_flag == BENCH)
-			bench_print(dis, SORT_FULL, all_ops);
-		free(all_ops);
-		free(array);
-		return(0);
-	}
-	if(s_flag.main_flag == SIMPLE)
-	{
-		bubble_main(array, size, s_flag.option_flag, &all_ops );
-		if(s_flag.option_flag == BENCH)
-			bench_print(dis, SIM_FULL, all_ops);
-		free(all_ops);
-		return(1);
-	}
-	if(s_flag.main_flag == COMPLEX)
-	{
-		bubble_main(array, size, s_flag.option_flag, &all_ops );
-		if(s_flag.option_flag == BENCH)
-			bench_print(dis, COM_FULL, all_ops);
-		free(all_ops);
-		return(1);
-	}
-	if(s_flag.main_flag == MEDIUM)
-	{
-		bubble_main(array, size, s_flag.option_flag, &all_ops );
-		if(s_flag.option_flag == BENCH)
-			bench_print(dis, MED_FULL, all_ops);
-		free(all_ops);
-		return(1);
-	}
-	if(s_flag.main_flag == ADAPTIVE)
-	{
-		if(dis < 0.2)
-		{
-			bubble_main(array, size, s_flag.option_flag, &all_ops);
-			if(s_flag.option_flag == BENCH)
-				bench_print(dis, ADA_SIM_FULL, all_ops);
-		free(all_ops);
-		return(1);
-		}
-		if(dis >= 0.2 && dis < 0.5)
-		{
-			bubble_main(array, size, s_flag.option_flag, &all_ops);
-			if(s_flag.option_flag == BENCH)
-				bench_print(dis, ADA_MED_FULL, all_ops);
-		free(all_ops);
-		return(1);
-		}
-		if(dis >= 0.5)
-		{
-			bubble_main(array, size, s_flag.option_flag, &all_ops);
-			if(s_flag.option_flag == BENCH)
-				bench_print(dis, ADA_COM_FULL, all_ops);
-		free(all_ops);
-		return(1);
-		}
-	}
-}
-
-
-int	main(int argc, char **argv)
-{
-	int	i;
-	int	*array;
-	int	size;
-	float	dis;
-	t_s_flag	s_flag;
-	t_ops	*all_ops;
-	t_list	*head;
-	
-	head = NULL;
-	s_flag.option_flag = 0;
-	if (argc < 3)
-		return (1);
-	size = 0;
-	if((ft_flag(argv, s_flag.flags)) == -1)
-		return(write(1,"Error\n", 6), 1);
-	array = ft_argv_to_array(argc, argv, &size);
-	if(ft_array_check(array, size) == -1)
-		return(write(1,"Error2\n", 7), 1);
-
-	main_1(array, size)
-}
-/*
 int	main(int argc, char **argv)
 {
 	int	i;
@@ -140,11 +32,18 @@ int	main(int argc, char **argv)
 	size = 0;
 	if((ft_flag(argv, s_flag.flags)) == -1)
 		return(write(1,"Error\n", 6), 1);
+	for(i = 0; i <= FLAG_SIZE; i++)
+		printf("flag%d:[%d]\n", i, s_flag.flags[i]);		
+
 	array = ft_argv_to_array(argc, argv, &size);
 	if(ft_array_check(array, size) == -1)
 		return(write(1,"Error2\n", 7), 1);
+
 	dis = ft_disorder(array, size);
+	printf("disorder: %f\n", dis);
 	ft_op_to_zero(&all_ops);
+
+	ft_print_ops(&all_ops);
 	i = 0;
 	while(i < FLAG_SIZE)
 	{
@@ -154,6 +53,8 @@ int	main(int argc, char **argv)
 			s_flag.main_flag = s_flag.flags[i];
 		i++;
 	}
+	printf("option:%d main:%d\n", s_flag.option_flag, s_flag.main_flag);
+
 	if(dis == 0)
 	{
 		if(s_flag.option_flag == BENCH)
@@ -162,6 +63,7 @@ int	main(int argc, char **argv)
 		free(array);
 		return(0);
 	}
+	
 	if(s_flag.main_flag == SIMPLE)
 	{
 		bubble_main(array, size, s_flag.option_flag, &all_ops );
@@ -213,7 +115,7 @@ int	main(int argc, char **argv)
 		return(1);
 		}
 	}
-// IGNORE AFTER
+
 	if(list_maker(array, size, &head) == 0)
 		return(write(1,"Error3\n", 7), 1);
 	t_list *ptr_ptr;
@@ -228,4 +130,3 @@ int	main(int argc, char **argv)
 
 	return(0);
 }
-*/

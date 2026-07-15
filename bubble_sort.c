@@ -121,10 +121,7 @@ void	bubble_main(int *array_oa, int size, short option, t_ops **all_ops)
 	if(size <= 5)
 		five_sort(list, option, all_ops);
 	else
-//	ft_show_two(list.array_a, list.array_b, list.size_a);
 		ft_bubble(list, option, all_ops);
-//	ft_show_two(list.array_a, list.array_b, list.size_a);
-//	ft_show_one(list.array_a, list.size_a);
 	free(list.array_a);
 	free(list.array_b);
 }

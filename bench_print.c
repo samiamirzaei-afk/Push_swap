@@ -1,18 +1,10 @@
 #include "push.h"
 //U+221A 
 
-int	ft_show_nbr(int *count, int *i, char *digit_buffer, int fd)
+void	ft_show_nbr(int *i, char *digit_buffer, int fd)
 {
-	int	result;
-
 	while (digit_buffer[*i] != '\0')
-	{
-		result = write(fd, &digit_buffer[(*i)--], 1);
-		if (result == -1)
-			return (-1);
-		*count += result;
-	}
-	return (*count);
+	       	write(fd, &digit_buffer[(*i)--], 1);
 }
 
 int ft_strlen(char *str)
@@ -25,13 +17,11 @@ int ft_strlen(char *str)
 	return(i);
 }
 
-int	ft_putnbr_fd(int nb, int fd)
+void	ft_putnbr_fd(int nb, int fd)
 {
 	int		i;
-	int		count;
 	char	digit_buffer[12];
 
-	count = 0;
 	digit_buffer[0] = '\0';
 	i = 1;
 	while (nb > 9)
@@ -41,9 +31,7 @@ int	ft_putnbr_fd(int nb, int fd)
 		i++;
 	}
 	digit_buffer[i] = nb + '0';
-	if (ft_show_nbr(&count, &i, digit_buffer, fd) == -1)
-		return (-1);
-	return (count);
+	ft_show_nbr(&i, digit_buffer, fd);
 }
 
 void ft_low_per(int count)
@@ -70,32 +58,27 @@ void ft_lowest_per(int count)
 	write(2, &dig, 3);
 }
 
-int	ft_putflo(float nb)
+void	ft_low_print(int count)
 {
-	int		i;
-	int		count;
-	char	digit_buffer[9];
-
-	count = 0;
-	i = 2;
-	digit_buffer[0] = '\0';
-	digit_buffer[1] = '%';
-	nb = nb * 10000;
-	count = nb;
 	if(count == 0)
 	{
-		return(write(2, "0%", 2));	
+		write(2, "0%", 2);
+		return ;
 	}
 	if(count < 10)
 	{
 		ft_lowest_per(count);
-		return(count);
+		return ;
 	}
 	if(count < 100)
 	{
 		ft_low_per(count);
-		return(count);
+		return ;
 	}
+}
+
+void	ft_flow_fill(char *digit_buffer, int count, int i)
+{
 	while (count > 9)
 	{
 		if(i == 4)
@@ -113,9 +96,23 @@ int	ft_putflo(float nb)
 		i++;
 	}
 	digit_buffer[i] = count + '0';
-	if (ft_show_nbr(&count, &i, digit_buffer, 2) == -1)
-		return (-1);
-	return (count);
+}
+void	ft_putflo(float nb)
+{
+	int		i;
+	int		count;
+	char	digit_buffer[9];
+
+	count = 0;
+	i = 2;
+	digit_buffer[0] = '\0';
+	digit_buffer[1] = '%';
+	nb = nb * 10000;
+	count = nb;
+	if(count < 100)
+		return(ft_low_print(count));
+	ft_flow_fill(digit_buffer, count, i);
+	ft_show_nbr(&i, digit_buffer, 2);
 }
 
 /*
