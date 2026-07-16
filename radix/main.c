@@ -4,93 +4,7 @@
 	3-RRA to get the smallest possible number to a[0], then push to stack B.
 */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
-
-
-void	ft_show_two(int *arrayA, int *arrayB, int size)
-{
-	int i;
-	i = 0;
-
-	while(i < size)
-	{
-		printf("arrayA[%d]=%d\n", i, arrayA[i]);
-		i++;
-	}
-	printf("\n");
-	i = 0;
-	while(i < size)
-	{
-		printf("arrayB[%d]=%d\n", i, arrayB[i]);
-		i++;
-	}
-	printf("\n");
-}
-
-void	ft_show_one(int *arraya, int size)
-{
-	int i;
-	i = 0;
-
-	while(i < size)
-	{
-		printf("arrayA[%d]=%d\n", i, arraya[i]);
-		i++;
-	}
-	printf("\n");
-	i = 0;
-}
-
-/*
-       // 0 1 2 3 4 5 6 7 
-	  9 8 1 4 2 5 7 4
-	small = 1
-	index = 2
-	save = 2
-	current = 7
-	
-	current && save > small;
-	current && save == 9
-	//
-	while(i <  size - 1)
-{
-	current = 2
-	current < save : save = current;
-}	
-	a[i] != a[index];
-	
-*/
-
-
-int ft_small_2(int *array, int size, int *small_i)
-{
-	int small;
-	int i;
-	int save;
-	int current;
-
-	i = 0;
-	small = array[*small_i];
-	current = array[i];
-	if(current == small)
-		i++;
-	save = array[i];
-	while(i < size)
-	{
-		current = array[i];
-		if(current < save && current > small)
-		{
-			save = array[i];
-			*small_i = i;
-		}
-		i++;
-	}
-	return(save);
-}
+#include "t_head.h"
 
 
 int ft_small(int *array, int size, int *small_i)
@@ -128,46 +42,55 @@ int ft_big(int *array, int size)
 			big = array[i];	
 		i++;
 	}
-
 	return(big);
 }
-
-
-int **ft_free_rad(int **result, int i)
+/*
+       // 0 1 2 3 4 5 6 7 
+	  9 8 1 4 2 5 7 4
+	small = 1
+	index = 2
+	save = 2
+	current = 7
+	
+	current && save > small;
+	current && save == 9
+	//
+	while(i <  size - 1)
 {
-	while(i > 0)
-	{
-		free(result[i]);
-		i--;
-	}
-	free(result);
-}
+	current = 2
+	current < save : save = current;
+}	
+	a[i] != a[index];
+	
+*/
 
-int	**ft_double_array(int size_a)
+int ft_small_2(int *array, int size, int smallest)
 {
-	int **result;
-	int i;
+    int i;
+    int next_smallest;
 
-	result = malloc(size_a * sizeof(int*));
-	if(result == NULL)
-		return(NULL);
-	i = 0;
-	while(i < size_a)
-	{
-		result[i] = malloc(1 * sizeof(int));
-		if(result[i] == NULL)
-			return(ft_free_rad(result, i));
-		i++;
-	}
-	return(result);
+    i = 0;
+    next_smallest = 0;
+    while (i < size)
+    {
+        if (array[i] > smallest)
+        {
+            next_smallest = array[i];
+            break;
+        }
+        i++;
+    }
+    i = 0;
+    while (i < size)
+    {
+        if (array[i] > smallest && array[i] < next_smallest)
+            next_smallest = array[i];
+        i++;
+    }
+    return (next_smallest);
 }
-void	ft_print_radix(int **array, int size)
-{
-	int i;
+// 1 3 8 7
 
-	for(i = 0; i < size; i++)
-		printf("array[%d]=%d\n", i, array[i][0]);
-}
 
 void	ft_radix(int *array_a, int *array_b, int size_a)
 {
@@ -176,6 +99,7 @@ void	ft_radix(int *array_a, int *array_b, int size_a)
 	int i;
 	int smallest;
 	int small_i;
+	int small;
 
 	smallest = 0;
 	size_b = -1;
@@ -184,13 +108,15 @@ void	ft_radix(int *array_a, int *array_b, int size_a)
 
 	i = 0;
 	array_radix[i++][0] = ft_small(array_a, size_a, &small_i);
+	small = array_a[small_i];
 	while(i < size_a - 1)
 	{
-		array_radix[i++][0] = ft_small_2(array_a, size_a, &small_i);
+
+		small = ft_small_2(array_a, size_a, small);
+		array_radix[i++][0] = small;
 	}
 	array_radix[i][0] = ft_big(array_a, size_a);
 	ft_print_radix(array_radix, size_a);	
-
 
 }
 
