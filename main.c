@@ -6,7 +6,7 @@
 /*   By: ammirzae <ammirzae@student.42vienna.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 14:24:16 by ammirzae          #+#    #+#             */
-/*   Updated: 2026/07/15 16:26:07 by ammirzae         ###   ########.fr       */
+/*   Updated: 2026/07/15 16:39:09 by ammirzae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push.h" 
@@ -17,18 +17,25 @@ int main_2(t_s_flag s_flag, t_ops *all_ops, t_di_ar rest)
 	{
 		if(s_flag.option_flag == BENCH)
 			bench_print(rest.dis, SORT_FULL, all_ops);
-		free(all_ops);
-		free(rest.array);
-		return(0);
+		return(free(all_ops), free(rest.array), 0);
 	}
 	if(s_flag.main_flag == SIMPLE)
 	{
 		bubble_main(rest.array, rest.size, s_flag.option_flag, &all_ops );
 		if(s_flag.option_flag == BENCH)
 			bench_print(rest.dis, SIM_FULL, all_ops);
-		free(all_ops);
-		return(0);
+		return(free(all_ops), 0);
 	}
+	if(s_flag.main_flag == ADAPTIVE && rest.dis < 0.2)
+	{
+		bubble_main(rest.array, rest.size, s_flag.option_flag, &all_ops);
+		if(s_flag.option_flag == BENCH)
+			bench_print(rest.dis, ADA_SIM_FULL, all_ops);
+		return(free(all_ops), 0);
+	}
+	
+}
+
 	if(s_flag.main_flag == COMPLEX)
 	{
 		bubble_main(rest.array, rest.size, s_flag.option_flag, &all_ops );
@@ -117,6 +124,8 @@ int	main(int argc, char **argv)
 		return(write(1,"Error2\n", 7), 1);
 	main_1(array, size, s_flag);
 }
+
+
 /*
 int	main(int argc, char **argv)
 {
