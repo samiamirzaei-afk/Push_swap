@@ -16,6 +16,9 @@ SRCS		= $(SRC_DIR)/ft_atoi.c \
 			  $(SRC_DIR)/list.c \
 			  $(SRC_DIR)/main.c \
 			  $(SRC_DIR)/operations.c \
+			  $(SRC_DIR)/operations_basic.c \
+			  $(SRC_DIR)/operations_rotate.c \
+			  $(SRC_DIR)/operations_reverse.c \
 			  $(SRC_DIR)/parse.c \
 			  $(SRC_DIR)/sort.c
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
