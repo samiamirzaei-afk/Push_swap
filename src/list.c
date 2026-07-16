@@ -6,20 +6,22 @@
 /*   By: sfurst <sfurst@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/07/16 21:45:44 by sfurst           #+#    #+#              */
-/*   Updated: 2026/07/16 21:45:44 by sfurst          ###   ########.fr        */
+/*   Updated: 2026/07/16 22:15:22 by sfurst          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
+#include "../include/push.h"
+#include <stdbool.h>
+#include <stdlib.h>
 
-int	stack_append(t_stack *stack, t_i32 value)
+bool	stack_append(t_stack *stack, t_i32 value)
 {
 	t_node	*node;
 	t_node	*last;
 
 	node = malloc(sizeof(*node));
 	if (!node)
-		return (0);
+		return (false);
 	node->value = value;
 	node->index = 0;
 	node->next = NULL;
@@ -33,7 +35,7 @@ int	stack_append(t_stack *stack, t_i32 value)
 		last->next = node;
 	}
 	stack->size++;
-	return (1);
+	return (true);
 }
 
 void	stack_clear(t_stack *stack)
@@ -49,7 +51,7 @@ void	stack_clear(t_stack *stack)
 	stack->size = 0;
 }
 
-int	is_sorted(t_stack *stack)
+bool	is_sorted(t_stack *stack)
 {
 	t_node	*node;
 
@@ -63,7 +65,7 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
-int	assign_indexes(t_ps *ps)
+void	assign_indexes(t_ps *ps)
 {
 	t_node	*node;
 	t_node	*other;
@@ -83,7 +85,6 @@ int	assign_indexes(t_ps *ps)
 		node->index = index;
 		node = node->next;
 	}
-	return (1);
 }
 
 /* Inversion ratio, kept on the linked-list representation. */

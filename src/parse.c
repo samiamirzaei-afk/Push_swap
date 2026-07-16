@@ -6,38 +6,39 @@
 /*   By: sfurst <sfurst@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/07/16 21:45:45 by sfurst           #+#    #+#              */
-/*   Updated: 2026/07/16 21:45:45 by sfurst          ###   ########.fr        */
+/*   Updated: 2026/07/16 22:16:15 by sfurst          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
-#include <string.h>
+#include "../include/push.h"
+#include "../include/strutils.h"
+#include <stdbool.h>
 
 static int	is_flag(const char *arg)
 {
-	return (!strcmp(arg, "--simple") || !strcmp(arg, "--medium") || !strcmp(arg,
-			"--complex") || !strcmp(arg, "--adaptive") || !strcmp(arg,
-			"--bench"));
+	return (!ft_strcmp(arg, "--simple") || !ft_strcmp(arg, "--medium")
+		|| !ft_strcmp(arg, "--complex") || !ft_strcmp(arg, "--adaptive")
+		|| !ft_strcmp(arg, "--bench"));
 }
 
-static int	set_flag(t_ps *ps, const char *arg)
+static bool	set_flag(t_ps *ps, const char *arg)
 {
-	if (!strcmp(arg, "--simple"))
-		ps->mode = SIMPLE;
-	else if (!strcmp(arg, "--medium"))
-		ps->mode = MEDIUM;
-	else if (!strcmp(arg, "--complex"))
-		ps->mode = COMPLEX;
-	else if (!strcmp(arg, "--adaptive"))
-		ps->mode = ADAPTIVE;
-	else if (!strcmp(arg, "--bench"))
+	if (!ft_strcmp(arg, "--simple"))
+		ps->mode = simple;
+	else if (!ft_strcmp(arg, "--medium"))
+		ps->mode = medium;
+	else if (!ft_strcmp(arg, "--complex"))
+		ps->mode = complex;
+	else if (!ft_strcmp(arg, "--adaptive"))
+		ps->mode = adaptive;
+	else if (!ft_strcmp(arg, "--bench"))
 		ps->bench = 1;
 	else
-		return (0);
-	return (1);
+		return (false);
+	return (true);
 }
 
-static int	duplicate(t_stack *stack, t_i32 value)
+static bool	duplicate(t_stack *stack, t_i32 value)
 {
 	t_node	*node;
 
@@ -45,32 +46,32 @@ static int	duplicate(t_stack *stack, t_i32 value)
 	while (node)
 	{
 		if (node->value == value)
-			return (1);
+			return (true);
 		node = node->next;
 	}
-	return (0);
+	return (false);
 }
 
-int	parse_arguments(t_ps *ps, int argc, char **argv)
+bool	parse_arguments(t_ps *ps, int argc, char **argv)
 {
 	t_parse_result	parsed;
 	int				i;
 
-	ps->mode = ADAPTIVE;
+	ps->mode = adaptive;
 	ps->bench = 0;
 	i = 1;
 	while (i < argc)
 	{
 		if (is_flag(argv[i]))
 			set_flag(ps, argv[i]);
-		else if (!strncmp(argv[i], "--", 2))
-			return (0);
+		else if (!ft_strncmp(argv[i], "--", 2))
+			return (false);
 		else
 		{
 			parsed = parse_i32(argv[i]);
 			if (parsed.status == t_i32_err || duplicate(&ps->a, parsed.value)
 				|| !stack_append(&ps->a, parsed.value))
-				return (0);
+				return (false);
 		}
 		i++;
 	}

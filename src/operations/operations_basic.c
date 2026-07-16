@@ -3,27 +3,37 @@
 /*                                                       :::      ::::::::    */
 /*   operations_basic.c                                :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
-/*   By: sfurst <sfurst@student.42vienna.com>      +#+  +:+       +#+         */
+/*   By: sfurst <sfurst@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/07/16 21:45:37 by sfurst           #+#    #+#              */
-/*   Updated: 2026/07/16 21:45:44 by sfurst          ###   ########.fr        */
+/*   Updated: 2026/07/16 22:04:49 by sfurst          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
+#include "../../include/push.h"
 
-void op_sa(t_ps *ps) { exec_swap(&ps->a); emit_operation(ps, "sa"); }
-void op_sb(t_ps *ps) { exec_swap(&ps->b); emit_operation(ps, "sb"); }
-void op_ss(t_ps *ps)
+void	op_sa(t_ps *ps)
+{
+	exec_swap(&ps->a);
+	emit_operation(ps, "sa");
+}
+
+void	op_sb(t_ps *ps)
+{
+	exec_swap(&ps->b);
+	emit_operation(ps, "sb");
+}
+
+void	op_ss(t_ps *ps)
 {
 	exec_swap(&ps->a);
 	exec_swap(&ps->b);
 	emit_operation(ps, "ss");
 }
 
-void op_pa(t_ps *ps)
+void	op_pa(t_ps *ps)
 {
-	t_node *node;
+	t_node	*node;
 
 	if (ps->b.size)
 	{
@@ -37,9 +47,9 @@ void op_pa(t_ps *ps)
 	emit_operation(ps, "pa");
 }
 
-void op_pb(t_ps *ps)
+void	op_pb(t_ps *ps)
 {
-	t_node *node;
+	t_node	*node;
 
 	if (ps->a.size)
 	{

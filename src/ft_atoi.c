@@ -6,13 +6,14 @@
 /*   By: sfurst <sfurst@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/07/16 21:45:44 by sfurst           #+#    #+#              */
-/*   Updated: 2026/07/16 21:45:44 by sfurst          ###   ########.fr        */
+/*   Updated: 2026/07/16 22:12:40 by sfurst          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
+#include "../include/push.h"
+#include <stdbool.h>
 
-static int	is_digit(char c)
+static inline bool	is_digit(char c)
 {
 	return (c >= '0' && c <= '9');
 }
@@ -68,6 +69,5 @@ t_parse_result	parse_i32(const char *str)
 		result.value = (t_i32)(-(t_i64)parsed.value);
 	else
 		result.value = (t_i32)parsed.value;
-	result.status = t_i32_ok;
-	return (result);
+	return (result.status = t_i32_ok, result);
 }

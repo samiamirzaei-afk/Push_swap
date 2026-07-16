@@ -3,31 +3,35 @@
 /*                                                       :::      ::::::::    */
 /*   operations.c                                      :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
-/*   By: sfurst <sfurst@student.42vienna.com>      +#+  +:+       +#+         */
+/*   By: sfurst <sfurst@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/07/16 21:45:37 by sfurst           #+#    #+#              */
-/*   Updated: 2026/07/16 21:45:44 by sfurst          ###   ########.fr        */
+/*   Updated: 2026/07/16 22:04:32 by sfurst          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
-#include <string.h>
+#include "../../include/push.h"
+#include "../../include/strutils.h"
 
-void emit_operation(t_ps *ps, const char *name)
+void	emit_operation(t_ps *ps, const char *name)
 {
+	char	buf[16];
+	size_t	len;
+
 	ps->operations++;
-	if (PUSH_PRINT_OPERATIONS)
-	{
-		write(STDOUT_FILENO, name, strlen(name));
-		write(STDOUT_FILENO, "\n", 1);
-	}
+	if (!PUSH_PRINT_OPERATIONS)
+		return ;
+	len = ft_strlen(name);
+	ft_memcpy(buf, name, len);
+	buf[len] = '\n';
+	write(STDOUT_FILENO, buf, len + 1);
 }
 
-void exec_swap(t_stack *stack)
+void	exec_swap(t_stack *stack)
 {
-	t_node *second;
-	t_i32  value;
-	t_i32  index;
+	t_node	*second;
+	t_i32	value;
+	t_i32	index;
 
 	if (stack->size < 2)
 		return ;
@@ -40,10 +44,10 @@ void exec_swap(t_stack *stack)
 	second->index = index;
 }
 
-void exec_rotate(t_stack *stack)
+void	exec_rotate(t_stack *stack)
 {
-	t_node *first;
-	t_node *last;
+	t_node	*first;
+	t_node	*last;
 
 	if (stack->size < 2)
 		return ;
@@ -56,10 +60,10 @@ void exec_rotate(t_stack *stack)
 	last->next = first;
 }
 
-void exec_reverse_rotate(t_stack *stack)
+void	exec_reverse_rotate(t_stack *stack)
 {
-	t_node *before_last;
-	t_node *last;
+	t_node	*before_last;
+	t_node	*last;
 
 	if (stack->size < 2)
 		return ;
