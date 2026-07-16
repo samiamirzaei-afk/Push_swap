@@ -38,8 +38,10 @@ void	ft_show_one(int *arraya, int size)
 
 int **ft_free_rad(int **result, int i)
 {
+	i--;
 	while(i > 0)
 	{
+		printf("current:%d\n", i);
 		free(result[i]);
 		i--;
 	}
@@ -70,7 +72,7 @@ void    ft_print_radix(int **array, int size)
 {
     int i;
 
-    for(i = 0; i < size; i++)
+    for(i = 0; i < size - 1; i++)
         printf("array[%d]=%d\n", i, array[i][0]);
 }
 

@@ -117,7 +117,7 @@ void	ft_radix(int *array_a, int *array_b, int size_a)
 	}
 	array_radix[i][0] = ft_big(array_a, size_a);
 	ft_print_radix(array_radix, size_a);	
-
+	ft_free_rad(array_radix, size_a);
 }
 
 
