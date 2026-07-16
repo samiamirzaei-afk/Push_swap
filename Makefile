@@ -1,21 +1,46 @@
-NAME = q.bug
+NAME = push_swap
 
-CFLAGS = -Wall -Wextra
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+CPPFLAGS = -Iinclude -MMD -MP
+PRINT_OPERATIONS ?= 1
+CPPFLAGS += -DPUSH_PRINT_OPERATIONS=$(PRINT_OPERATIONS)
+RM = rm -rf
 
-SRC = main.c\
-	  disorder.c\
-	  argv_to_array.c\
-	  flag.c\
-	  utils.c\
-	  utils2.c\
-	  ft_atoi.c\
-	  error_check.c\
-	  bubble_sort.c\
-	  rra_ra_sa_pa_pb.c\
-	  five_sort.c\
-	  list_maker.c\
-	  ft_op_to_zero.c\
-	  bench_print.c
+# Optional libs: no configured optional library directory detected.
+LIBS		=
 
-all:
-	$(CC) $(CFLAGS) $(SRC) -g -o $(NAME)
+SRC_DIR = src
+OBJ_DIR = obj
+SRCS		= $(SRC_DIR)/ft_atoi.c \
+			  $(SRC_DIR)/list.c \
+			  $(SRC_DIR)/main.c \
+			  $(SRC_DIR)/operations.c \
+			  $(SRC_DIR)/parse.c \
+			  $(SRC_DIR)/sort.c
+OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+DEPS = $(OBJS:.o=.d)
+
+all: $(NAME)
+
+$(NAME): $(OBJS) $(LIBS)
+	$(CC) $(CFLAGS) $(OBJS) -o $@
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c Makefile
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+
+clean:
+	$(RM) $(OBJ_DIR)
+
+fclean: clean
+	$(RM) $(NAME)
+
+re:
+	$(MAKE) fclean
+	$(MAKE) all
+
+-include $(DEPS)
+
+.PHONY: all clean fclean re
+.DEFAULT_GOAL := all
