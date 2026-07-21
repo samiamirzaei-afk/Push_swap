@@ -6,10 +6,55 @@
 /*   By: ammirzae <ammirzae@student.42vienna.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 14:24:16 by ammirzae          #+#    #+#             */
-/*   Updated: 2026/07/15 16:39:09 by ammirzae         ###   ########.fr       */
+/*   Updated: 2026/07/21 14:16:09 by ammirzae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push.h" 
+
+int main_4(t_s_flag s_flag, t_ops *all_ops, t_di_ar rest)
+{
+
+	if(s_flag.main_flag == MEDIUM)
+	{
+		bubble_main(rest.array, rest.size, s_flag.option_flag, &all_ops );
+		if(s_flag.option_flag == BENCH)
+			bench_print(rest.dis, MED_FULL, all_ops);
+		free(all_ops);
+		return(0);
+	}
+	if(s_flag.main_flag == ADAPTIVE)
+	{
+		if(rest.dis >= 0.2 && rest.dis < 0.5)
+		{
+			bubble_main(rest.array, rest.size, s_flag.option_flag, &all_ops);
+			if(s_flag.option_flag == BENCH)
+				bench_print(rest.dis, ADA_MED_FULL, all_ops);
+		free(all_ops);
+		return(1);
+		}
+	}
+	return(0);
+}
+
+int main_3(t_s_flag s_flag, t_ops *all_ops, t_di_ar rest)
+{
+	if(s_flag.main_flag == COMPLEX)
+	{
+		radix_main(rest.array, rest.size, s_flag.option_flag, &all_ops );
+		if(s_flag.option_flag == BENCH)
+			bench_print(rest.dis, COM_FULL, all_ops);
+		return(free(all_ops), 0);
+	}
+	if(s_flag.main_flag == ADAPTIVE && rest.dis >= 0.5)
+	{
+		radix_main(rest.array, rest.size, s_flag.option_flag, &all_ops);
+		if(s_flag.option_flag == BENCH)
+			bench_print(rest.dis, ADA_COM_FULL, all_ops);
+		return(free(all_ops), 0);
+	}
+	main_4(s_flag, all_ops, rest);
+	return(0);
+}
 
 int main_2(t_s_flag s_flag, t_ops *all_ops, t_di_ar rest)
 {
@@ -33,52 +78,7 @@ int main_2(t_s_flag s_flag, t_ops *all_ops, t_di_ar rest)
 			bench_print(rest.dis, ADA_SIM_FULL, all_ops);
 		return(free(all_ops), 0);
 	}
-	
-}
-
-	if(s_flag.main_flag == COMPLEX)
-	{
-		bubble_main(rest.array, rest.size, s_flag.option_flag, &all_ops );
-		if(s_flag.option_flag == BENCH)
-			bench_print(rest.dis, COM_FULL, all_ops);
-		free(all_ops);
-		return(0);
-	}
-	if(s_flag.main_flag == MEDIUM)
-	{
-		bubble_main(rest.array, rest.size, s_flag.option_flag, &all_ops );
-		if(s_flag.option_flag == BENCH)
-			bench_print(rest.dis, MED_FULL, all_ops);
-		free(all_ops);
-		return(0);
-	}
-	if(s_flag.main_flag == ADAPTIVE)
-	{
-		if(rest.dis < 0.2)
-		{
-			bubble_main(rest.array, rest.size, s_flag.option_flag, &all_ops);
-			if(s_flag.option_flag == BENCH)
-				bench_print(rest.dis, ADA_SIM_FULL, all_ops);
-		free(all_ops);
-		return(1);
-		}
-		if(rest.dis >= 0.2 && rest.dis < 0.5)
-		{
-			bubble_main(rest.array, rest.size, s_flag.option_flag, &all_ops);
-			if(s_flag.option_flag == BENCH)
-				bench_print(rest.dis, ADA_MED_FULL, all_ops);
-		free(all_ops);
-		return(1);
-		}
-		if(rest.dis >= 0.5)
-		{
-			bubble_main(rest.array, rest.size, s_flag.option_flag, &all_ops);
-			if(s_flag.option_flag == BENCH)
-				bench_print(rest.dis, ADA_COM_FULL, all_ops);
-		free(all_ops);
-		return(1);
-		}
-	}
+	main_3(s_flag, all_ops, rest);
 	return(0);
 }
 

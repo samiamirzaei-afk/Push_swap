@@ -91,6 +91,37 @@ int ft_small_2(int *array, int size, int smallest)
 }
 // 1 3 8 7
 
+int ft_max_bits(int num)
+{
+	char str[33];
+	int i;
+	int j;
+	
+	i = 0;
+	j = 0;
+
+	str[32] = '\0';
+	
+	while(i < 32)
+	{
+		if(((num >> i) & 1) == 0)
+			str[i] = '0';
+		else
+			str[i] = '1';
+		i++;
+	}
+	printf("str: %s\n", str);
+	i = 0;
+	while(str[i] != '\0')
+	{
+		if(str[i] == '1')
+			j = i;
+		i++;
+	}
+	return (j + 1);
+}
+
+
 
 void	ft_radix(int *array_a, int *array_b, int size_a)
 {
@@ -100,10 +131,20 @@ void	ft_radix(int *array_a, int *array_b, int size_a)
 	int smallest;
 	int small_i;
 	int small;
+	int big;
+	int max_bit;
 
 	smallest = 0;
 	size_b = -1;
 
+	big = ft_big(array_a, size_a);
+	max_bit = ft_max_bits(big);
+	
+	printf("max[%d] bits:%d \n",big, max_bit);
+	
+	return;
+
+/*
 	array_radix = ft_double_array(size_a); 
 
 	i = 0;
@@ -118,6 +159,7 @@ void	ft_radix(int *array_a, int *array_b, int size_a)
 	array_radix[i][0] = ft_big(array_a, size_a);
 	ft_print_radix(array_radix, size_a);	
 	ft_free_rad(array_radix, size_a);
+*/
 }
 
 

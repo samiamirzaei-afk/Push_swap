@@ -15,7 +15,9 @@ SRC = main.c\
 	  five_sort.c\
 	  list_maker.c\
 	  ft_op_to_zero.c\
-	  bench_print.c
+	  bench_print.c\
+	  radix_main.c\
+	  list_swap_ro_rero_pb_pa.c
 
 all:
 	$(CC) $(CFLAGS) $(SRC) -g -o $(NAME)

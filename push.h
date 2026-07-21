@@ -125,6 +125,7 @@ typedef enum e_flag
 typedef struct s_list
 {
 	int		num;
+	int		index;
 	struct s_list	*next;
 }	t_list;
 
@@ -175,6 +176,9 @@ void	ft_lstiter(t_list *list, void (*f)(void *));
 
 /* bench_print.c */
 void	bench_print(float dis, char *command, t_ops *all_ops);
+
+/* main_3 */
+int		radix_main(int *array, int size, short option, t_ops **all_ops);
 
 
 #endif
