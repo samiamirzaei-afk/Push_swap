@@ -44,11 +44,11 @@ void	list_pa(t_list **list_a, t_list **list_b)
 {
 	t_list *anchor;
 
-	if(*list_b)
+	if(*list_b == NULL)
 		return ;	
 	anchor = (*list_b);
 	*list_b = (*list_b)->next;
-	if(*list_a)
+	if(*list_a == NULL)
 	{
 		(*list_a) = anchor;
 		(*list_a)->next = NULL;

@@ -6,7 +6,7 @@
 /*   By: ammirzae <ammirzae@student.42vienna.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 14:24:16 by ammirzae          #+#    #+#             */
-/*   Updated: 2026/07/21 14:16:09 by ammirzae         ###   ########.fr       */
+/*   Updated: 2026/07/22 14:14:20 by ammirzae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push.h" 
@@ -62,6 +62,7 @@ int main_2(t_s_flag s_flag, t_ops *all_ops, t_di_ar rest)
 	{
 		if(s_flag.option_flag == BENCH)
 			bench_print(rest.dis, SORT_FULL, all_ops);
+		printf("already sorted!\n");
 		return(free(all_ops), free(rest.array), 0);
 	}
 	if(s_flag.main_flag == SIMPLE)
