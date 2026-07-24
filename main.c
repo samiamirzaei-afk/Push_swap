@@ -16,7 +16,7 @@ int main_4(t_s_flag s_flag, t_ops *all_ops, t_di_ar rest)
 
 	if(s_flag.main_flag == MEDIUM)
 	{
-		bubble_main(rest.array, rest.size, s_flag.option_flag, &all_ops );
+		bubble_main(rest.array, rest.size, s_flag.option_flag, &all_ops);
 		if(s_flag.option_flag == BENCH)
 			bench_print(rest.dis, MED_FULL, all_ops);
 		free(all_ops);
@@ -52,8 +52,7 @@ int main_3(t_s_flag s_flag, t_ops *all_ops, t_di_ar rest)
 			bench_print(rest.dis, ADA_COM_FULL, all_ops);
 		return(free(all_ops), 0);
 	}
-	main_4(s_flag, all_ops, rest);
-	return(0);
+	return(main_4(s_flag, all_ops, rest));
 }
 
 int main_2(t_s_flag s_flag, t_ops *all_ops, t_di_ar rest)
@@ -85,14 +84,15 @@ int main_2(t_s_flag s_flag, t_ops *all_ops, t_di_ar rest)
 
 
 
-void main_1(int *array, int size, t_s_flag s_flag)
+int main_1(int *array, int size, t_s_flag s_flag)
 {
 	int	i;
 	t_ops	*all_ops;
 	t_di_ar	rest;
 	
 	rest.dis = ft_disorder(array, size);
-	ft_op_to_zero(&all_ops);
+	if(ft_op_to_zero(&all_ops) == NULL)
+		return(free(array), -1);
 	i = 0;
 	while(i < FLAG_SIZE)
 	{
@@ -104,7 +104,7 @@ void main_1(int *array, int size, t_s_flag s_flag)
 	}
 	rest.array = array;
 	rest.size = size;
-	main_2(s_flag, all_ops, rest);
+	return (main_2(s_flag, all_ops, rest));
 }
 
 
@@ -121,6 +121,8 @@ int	main(int argc, char **argv)
 	if((ft_flag(argv, s_flag.flags)) == -1)
 		return(write(1,"Error\n", 6), 1);
 	array = ft_argv_to_array(argc, argv, &size);
+	if(array == NULL)
+		return(0);
 	if(ft_array_check(array, size) == -1)
 		return(write(1,"Error2\n", 7), 1);
 	main_1(array, size, s_flag);

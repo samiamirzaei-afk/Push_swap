@@ -101,7 +101,7 @@ void	ft_bubble(t_arrays list, short option, t_ops **all_ops)
 	return ;
 }
 
-void	bubble_main(int *array_oa, int size, short option, t_ops **all_ops)
+int	bubble_main(int *array_oa, int size, short option, t_ops **all_ops)
 {
 	t_arrays list;
 	int i;
@@ -109,7 +109,7 @@ void	bubble_main(int *array_oa, int size, short option, t_ops **all_ops)
 	i = 0;
 	list.array_b = malloc((size + 1) * sizeof(int));
 	if(!list.array_b)
-		free(array_oa);
+		return(free(array_oa), -1);
 	while(i < size)
 	{
 		list.array_b[i] = 0;
@@ -122,6 +122,5 @@ void	bubble_main(int *array_oa, int size, short option, t_ops **all_ops)
 		five_sort(list, option, all_ops);
 	else
 		ft_bubble(list, option, all_ops);
-	free(list.array_a);
-	free(list.array_b);
+	return(free(list.array_a), free(list.array_b), 0);
 }

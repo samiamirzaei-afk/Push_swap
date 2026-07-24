@@ -1,5 +1,6 @@
 #include "push.h"
 
+
 int ft_max_bits(int num)
 {
 	char str[33];
@@ -8,9 +9,7 @@ int ft_max_bits(int num)
 	
 	i = 0;
 	j = 0;
-
 	str[32] = '\0';
-	
 	while(i < 32)
 	{
 		if(((num >> i) & 1) == 0)
@@ -19,7 +18,6 @@ int ft_max_bits(int num)
 			str[i] = '1';
 		i++;
 	}
-//	printf("str: %s\n", str);
 	i = 0;
 	while(str[i] != '\0')
 	{
@@ -30,7 +28,7 @@ int ft_max_bits(int num)
 	return (j + 1);
 }
 
-int ft_small_2(int *array, int size, int smallest)
+int ft_next_small(int *array, int size, int smallest)
 {
     int i;
     int next_smallest;
@@ -56,177 +54,89 @@ int ft_small_2(int *array, int size, int smallest)
     return (next_smallest);
 }
 
-
-//0 for value, 1 for index as well
-void list_show_one(t_list **head, int option)
+int radix_indexer_2(t_list **head, int *array, int size, t_rain *va)
 {
-	int i;
-	t_list *ptr;
-
-	ptr = *head;
-	if(option == 0)
+	va->i = 0;
+	va->k = 0;
+	while(va->i < size - 1)
 	{
-		for(i = 0; ptr != NULL; i++)
+		va->ptr = *head;
+		va->small = ft_next_small(array, size, va->small);
+		va->j = 0;
+		while(va->j < size)
 		{
-			printf("list[%d]: %d\n", i , ptr->num);
-			ptr = ptr->next;
-		}
-	}
-	if(option == 1)
-	{
-		for(i = 0; ptr != NULL; i++)
-		{
-			printf("list[%d][i:%d] : %d\n", i , ptr->index, ptr->num);
-			ptr = ptr->next;
-		}
-	}
-	printf("\n");
-}
-//0 for value, 1 for index as well
-void list_show_two(t_list **list_a, t_list **list_b, int option)
-{
-	int i;
-	t_list *ptr;
-
-	ptr = *list_a;
-	if(option == 0)
-	{
-		for(i = 0; ptr != NULL; i++)
-		{
-			printf("list_A[%d]: %d\n", i , ptr->num);
-			ptr = ptr->next;
-		}
-	}
-	if(option == 1)
-	{
-		for(i = 0; ptr != NULL; i++)
-		{
-			printf("list_A[%d][i:%d] : %d\n", i , ptr->index, ptr->num);
-			ptr = ptr->next;
-		}
-	}
-	printf("\n");
-	ptr = *list_b;
-	if(option == 0)
-	{
-		for(i = 0; ptr != NULL; i++)
-		{
-			printf("list_B[%d]: %d\n", i , ptr->num);
-			ptr = ptr->next;
-		}
-	}
-	if(option == 1)
-	{
-		for(i = 0; ptr != NULL; i++)
-		{
-			printf("list_B[%d][i:%d] : %d\n", i , ptr->index, ptr->num);
-			ptr = ptr->next;
-		}
-	}
-	printf("\n");
-}
-
-int radix_indexer(t_list **head, int *array, int size)
-{
-	int small_i;
-	int small;
-	int i;
-	int j;
-	int k;
-
-	t_list *ptr;
-	k = 0;
-	ptr = *head;
-	small_i = 0;
-	small = ft_small(array, size, &small_i);
-	j = 0;
-	while(j < size)
-	{
-		if(small == ptr->num)
-		{	
-				ptr->index = k++;
-				break;
-		}
-		j++;
-		ptr = ptr->next;
-	}
-	i = 0;
-	while(i < size - 1)
-	{
-		ptr = *head;
-		small = ft_small_2(array, size, small);
-		j = 0;
-		while(j < size)
-		{
-			if(small == ptr->num)
+			if(va->small == va->ptr->num)
 			{	
-				ptr->index = k++;
+				va->ptr->index = (va)->k++;
 				break;
 			}
-			ptr = ptr->next;
-			j++;
+			va->ptr = va->ptr->next;
+			va->j++;
 		}
-		i++;
+		va->i++;
 	}
-	return(k);
+	return(va->k);
+}
+int radix_indexer(t_list **head, int *array, int size)
+{
+	t_rain va;
+	
+	va.k = 0;
+	va.small_i = 0;
+	va.j = 0;
+	va.ptr = *head;
+	va.small = ft_small(array, size, &va.small_i);
+	while(va.j < size)
+	{
+		if(va.small == va.ptr->num)
+		{	
+				va.ptr->index = va.k++;
+				break;
+		}
+		va.j++;
+		va.ptr = va.ptr->next;
+	}
+	return(radix_indexer_2(head, array, size, &va));
+}
+
+int	radix_main_2(t_aso *ar, t_rava *va, t_ops **all_ops)
+{
+
+	va->i = 0;
+	va->j = 0;
+	while(va->i < va->max_bits)
+	{
+		va->j = 0;
+		while(va->j < ar->size && va->list_a != NULL)
+		{
+			if ((((va->list_a->index >> va->i) & 1) != 0))
+				list_rotate_a(&va->list_a, ar->option, all_ops);
+			else
+				list_pb(&va->list_a, &va->list_b, ar->option, all_ops);
+			va->j++;
+		}
+		while(va->list_b != NULL)
+			list_pa(&va->list_a, &va->list_b, ar->option, all_ops);
+		va->i++;
+	}
+	return(ft_lstclear(&va->list_a), free(ar->array), 1);
 }
 
 int	radix_main(int *array, int size, short option, t_ops **all_ops)
 {
-	t_list *list_a;
-	t_list *head;
-	t_list *list_b;
-	int big;
-	int max_bits;
+	t_rava va;
+	t_aso ar;
 
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	list_a = NULL;
-	list_b = NULL;
-	if(list_maker(array, size, &list_a) == 0)
-			return(write(1, "Error_C\n", 8), -1);
-	head = list_a;
-
-	big = radix_indexer(&list_a, array, size);
-//	list_show_two(&list_a, &list_b, 1);
-	max_bits = ft_max_bits(big);
-//	printf("max[%d] bits:%d \n",big, max_bits);
-//	list_show_one(&list_a);
-
-	while(i < max_bits)
-	{
-		head = list_a;
-		j = 0;
-		while(j < size && list_a != NULL)
-		{
-//			printf("list[i:%d] : %d\n", list_a->index, list_a->num);
-			if ((((list_a->index >> i) & 1) != 0))
-			{
-				list_rotate(&list_a);
-				printf("ra\n");
-			}
-			else
-			{
-				list_pb(&list_a, &list_b);
-				printf("pb\n");
-			}
-			j++;
-	//		list_show_two(&list_a, &list_b, 1);
-		}
-		while(list_b != NULL)
-		{
-				list_pa(&list_a, &list_b);
-				printf("pa\n");
-		}
-		i++;
-	}
-
-//			list_show_two(&list_a, &list_b, 1);
-
-	ft_lstclear(&list_a);
-	free(array);
-	return(1);
+	if(size <= 5)
+		return(bubble_main(array, size, option, all_ops), 1);
+	va.list_a = NULL;
+	va.list_b = NULL;
+	if(list_maker(array, size, &va.list_a) == 0)
+			return(free(array), write(1, "Error_C\n", 8), -1);
+	va.big = radix_indexer(&va.list_a, array, size);
+	va.max_bits = ft_max_bits(va.big);
+	ar.array = array;
+	ar.size = size;
+	ar.option = option;
+	return(radix_main_2(&ar, &va, all_ops));
 }

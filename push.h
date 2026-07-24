@@ -36,6 +36,14 @@ typedef struct s_array
 
 }	t_arrays;
 
+
+typedef struct s_list
+{
+	int		num;
+	int		index;
+	struct s_list	*next;
+}	t_list;
+
 typedef struct s_rest_of_stuff
 {
 	int	*array;
@@ -50,6 +58,34 @@ typedef struct s_struct1
 
 }	t_lstsmall;
 
+typedef struct s_struct_radix2
+{
+	int	small_i;
+	int	small;
+	int i;
+	int j;
+	int k;
+	t_list *ptr;
+
+}	t_rain;
+
+typedef struct s_struct_radix3
+{
+	t_list	*list_a;
+	t_list	*list_b;
+	int 	big;
+	int		max_bits;
+	int i;
+	int j;
+}	t_rava;
+
+typedef struct s_struct_radix4
+{
+	int	*array;
+	int	size;
+	short	option;
+}	t_aso;
+
 typedef struct s_flag
 {
 	short	flags[FLAG_SIZE + 1];
@@ -57,6 +93,15 @@ typedef struct s_flag
 	short	option_flag;
 
 }	t_s_flag;
+
+typedef struct s_five 
+{
+        int small;
+        int big;
+        int small_i;
+        int big_i;
+
+}	t_big_small;
 
 typedef struct s_op
 {
@@ -113,7 +158,6 @@ typedef enum e_flag
     SIMPLE,
     BENCH
 }   t_flag;
-
 /*
 --adaptive = 1
 --complex = 2
@@ -121,25 +165,6 @@ typedef enum e_flag
 --simple = 4
 --bench = 5
 */
-
-typedef struct s_list
-{
-	int		num;
-	int		index;
-	struct s_list	*next;
-}	t_list;
-
-typedef struct s_five 
-{
-        int small;
-        int big;
-        int small_i;
-        int big_i;
-
-}	t_big_small;
-
-
-
 /* rra_ra_sa_pa_pb.c */
 void	ft_ra(t_arrays *list, char *command, short option, t_ops **all_ops);
 void	ft_rra(t_arrays *list, char *command, short option, t_ops **all_ops);
@@ -161,7 +186,7 @@ void	ft_show_two(int *array_a, int *array_b, int size);
 void	ft_show_one(int *arraya, int size);
 int	ft_small(int *array, int size, int *small_i);
 void	ft_bubble(t_arrays list, short option, t_ops **all_ops);
-void	bubble_main(int *array_a, int size, short option, t_ops **all_ops);
+int	bubble_main(int *array_a, int size, short option, t_ops **all_ops);
 
 /* ??? */
 int	list_maker(int *array, int size, t_list **head);
@@ -179,6 +204,14 @@ void	bench_print(float dis, char *command, t_ops *all_ops);
 
 /* main_3 */
 int		radix_main(int *array, int size, short option, t_ops **all_ops);
+
+
+/* list_swap_ro_rero_pb_pa */
+void	list_swap(t_list **current, t_list **target);
+void	list_rotate_a(t_list **current, short option, t_ops **all_ops);
+void	list_re_rotate(t_list **current);
+void	list_pa(t_list **list_a, t_list **list_b, short option, t_ops **all_ops);
+void 	list_pb(t_list **list_a, t_list **list_b, short option, t_ops **all_ops);
 
 
 #endif
