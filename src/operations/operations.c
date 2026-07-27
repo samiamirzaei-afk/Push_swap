@@ -6,19 +6,20 @@
 /*   By: sfurst <sfurst@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/07/16 21:45:37 by sfurst           #+#    #+#              */
-/*   Updated: 2026/07/16 22:04:32 by sfurst          ###   ########.fr        */
+/*   Updated: 2026/07/27 16:26:55 by sfurst          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push.h"
 #include "../../include/strutils.h"
 
-void	emit_operation(t_ps *ps, const char *name)
+void	emit_operation(t_ps *ps, const char *name, t_op_type type)
 {
 	char	buf[16];
 	size_t	len;
 
 	ps->operations++;
+	ps->op_stats[type]++;
 	if (!PUSH_PRINT_OPERATIONS)
 		return ;
 	len = ft_strlen(name);

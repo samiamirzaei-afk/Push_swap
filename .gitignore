@@ -63,3 +63,4 @@ codexion_tsan
 *.log
 local_tests/
 tests/
+checker

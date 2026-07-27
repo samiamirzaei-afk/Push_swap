@@ -6,7 +6,7 @@
 /*   By: sfurst <sfurst@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/07/16 21:45:37 by sfurst           #+#    #+#              */
-/*   Updated: 2026/07/16 22:11:47 by sfurst          ###   ########.fr        */
+/*   Updated: 2026/07/27 16:26:55 by sfurst          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,13 @@
 
 static void	init_ps(t_ps *ps)
 {
-	ps->a.top = NULL;
-	ps->a.size = 0;
-	ps->b.top = NULL;
-	ps->b.size = 0;
-	ps->operations = 0;
+	*ps = (t_ps){0};
 }
 
 static void	sort_stack(t_ps *ps)
 {
 	if (ps->mode == simple)
-		selection_sort(ps);
+		bubble_sort(ps);
 	else if (ps->mode == medium)
 		chunk_sort(ps);
 	else if (ps->mode == complex)

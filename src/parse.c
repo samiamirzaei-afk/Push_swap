@@ -6,7 +6,7 @@
 /*   By: sfurst <sfurst@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/07/16 21:45:45 by sfurst           #+#    #+#              */
-/*   Updated: 2026/07/16 22:16:15 by sfurst          ###   ########.fr        */
+/*   Updated: 2026/07/27 16:26:55 by sfurst          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,25 @@ static int	is_flag(const char *arg)
 static bool	set_flag(t_ps *ps, const char *arg)
 {
 	if (!ft_strcmp(arg, "--simple"))
+	{
 		ps->mode = simple;
+		ps->adaptive = 0;
+	}
 	else if (!ft_strcmp(arg, "--medium"))
+	{
 		ps->mode = medium;
+		ps->adaptive = 0;
+	}
 	else if (!ft_strcmp(arg, "--complex"))
+	{
 		ps->mode = complex;
+		ps->adaptive = 0;
+	}
 	else if (!ft_strcmp(arg, "--adaptive"))
+	{
 		ps->mode = adaptive;
+		ps->adaptive = 1;
+	}
 	else if (!ft_strcmp(arg, "--bench"))
 		ps->bench = 1;
 	else
@@ -58,6 +70,7 @@ bool	parse_arguments(t_ps *ps, int argc, char **argv)
 	int				i;
 
 	ps->mode = adaptive;
+	ps->adaptive = 1;
 	ps->bench = 0;
 	i = 1;
 	while (i < argc)
