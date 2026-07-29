@@ -57,7 +57,7 @@ int ft_next_small(int *array, int size, int smallest)
 int radix_indexer_2(t_list **head, int *array, int size, t_rain *va)
 {
 	va->i = 0;
-	va->k = 0;
+	va->k = 1;
 	while(va->i < size - 1)
 	{
 		va->ptr = *head;
@@ -77,6 +77,10 @@ int radix_indexer_2(t_list **head, int *array, int size, t_rain *va)
 	}
 	return(va->k);
 }
+
+
+void list_show_two(t_list **list_a, t_list **list_b, int option);
+
 int radix_indexer(t_list **head, int *array, int size)
 {
 	t_rain va;
@@ -86,6 +90,10 @@ int radix_indexer(t_list **head, int *array, int size)
 	va.j = 0;
 	va.ptr = *head;
 	va.small = ft_small(array, size, &va.small_i);
+//	50 70 40 80 90 
+//	2  3  1  4  5
+//	va.small = 40
+//	va.small_i = 2
 	while(va.j < size)
 	{
 		if(va.small == va.ptr->num)
@@ -119,6 +127,7 @@ int	radix_main_2(t_aso *ar, t_rava *va, t_ops **all_ops)
 			list_pa(&va->list_a, &va->list_b, ar->option, all_ops);
 		va->i++;
 	}
+	list_show_two(&va->list_a, &va->list_b, 1);
 	return(ft_lstclear(&va->list_a), free(ar->array), 1);
 }
 
@@ -134,6 +143,8 @@ int	radix_main(int *array, int size, short option, t_ops **all_ops)
 	if(list_maker(array, size, &va.list_a) == 0)
 			return(free(array), write(1, "Error_C\n", 8), -1);
 	va.big = radix_indexer(&va.list_a, array, size);
+	list_show_two(&va.list_a, &va.list_b, 1);
+
 	va.max_bits = ft_max_bits(va.big);
 	ar.array = array;
 	ar.size = size;

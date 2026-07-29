@@ -8,7 +8,7 @@ void	list_swap(t_list **current, t_list **target)
 	(*current)->num = (*target)->num;
 	(*target)->num = temp;
 }
-//anchor should be the start node;
+//anchor should be the start node; first to last;
 void	list_rotate_a(t_list **current, short option, t_ops **all_ops)
 {
 	t_list *start_node;
@@ -26,8 +26,8 @@ void	list_rotate_a(t_list **current, short option, t_ops **all_ops)
 		(*all_ops)->ra++;
 	write(1, "ra\n", 3);
 }
-//
-void	list_re_rotate(t_list **current)
+//last to first
+void	list_re_rotate(t_list **current, short option, t_ops **all_ops)
 {
 	t_list *start_node;
 	t_list *anchor;
@@ -40,6 +40,9 @@ void	list_re_rotate(t_list **current)
 	(*current)->next = NULL;
 	start_node->next = anchor;
 	(*current) = start_node;	
+	if(option == BENCH)
+		(*all_ops)->rra++;
+	write(1, "rra\n", 4);
 }
 
 void	list_pa(t_list **list_a, t_list **list_b, short option, t_ops **all_ops)

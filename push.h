@@ -79,10 +79,19 @@ typedef struct s_struct_radix3
 	int j;
 }	t_rava;
 
+typedef struct s_med
+{
+        t_list  *list_a;
+        t_list  *list_b;
+	int chunk_size;
+	int min_size;
+	int max_size;
+}	t_med;
+
 typedef struct s_struct_radix4
 {
 	int	*array;
-	int	size;
+   	int	size;
 	short	option;
 }	t_aso;
 
@@ -209,9 +218,32 @@ int		radix_main(int *array, int size, short option, t_ops **all_ops);
 /* list_swap_ro_rero_pb_pa */
 void	list_swap(t_list **current, t_list **target);
 void	list_rotate_a(t_list **current, short option, t_ops **all_ops);
-void	list_re_rotate(t_list **current);
+void	list_re_rotate(t_list **current, short option, t_ops **all_ops);
 void	list_pa(t_list **list_a, t_list **list_b, short option, t_ops **all_ops);
 void 	list_pb(t_list **list_a, t_list **list_b, short option, t_ops **all_ops);
+
+/* list_rb_rrb.c */
+void	list_rb(t_list **current, short option, t_ops **all_ops);
+void	list_rrb(t_list **current, short option, t_ops **all_ops);
+
+/* chuck_sort.c */
+
+int ft_next_small(int *array, int size, int smallest);
+int radix_indexer_2(t_list **head, int *array, int size, t_rain *va);
+int radix_indexer(t_list **head, int *array, int size);
+int ft_list_big(t_list *head, int *big_i);
+void back_search(t_med *va, short option, t_ops **all_ops, int big);
+void front_search(t_med *va, short option, t_ops **all_ops, int big);
+int ft_next_push(t_med *va, short option, t_ops **all_ops, int *big_i, int big);
+int chuck_end(t_med *va, short option, t_ops **all_ops);
+int	ft_chuck_find(t_med *va, short option, t_ops **all_ops);
+int	chunk_sort(int *array, int size, short option, t_ops **all_ops);
+
+/* ft_sqrt.c */
+int sqrt_low(int nb);
+int sqrt_mid(int nb);
+int sqrt_high(int nb);
+int ft_sqrt_start(int nb);
 
 
 #endif

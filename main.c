@@ -13,10 +13,9 @@
 
 int main_4(t_s_flag s_flag, t_ops *all_ops, t_di_ar rest)
 {
-
 	if(s_flag.main_flag == MEDIUM)
 	{
-		bubble_main(rest.array, rest.size, s_flag.option_flag, &all_ops);
+		chunk_sort(rest.array, rest.size, s_flag.option_flag, &all_ops);
 		if(s_flag.option_flag == BENCH)
 			bench_print(rest.dis, MED_FULL, all_ops);
 		free(all_ops);
@@ -26,7 +25,7 @@ int main_4(t_s_flag s_flag, t_ops *all_ops, t_di_ar rest)
 	{
 		if(rest.dis >= 0.2 && rest.dis < 0.5)
 		{
-			bubble_main(rest.array, rest.size, s_flag.option_flag, &all_ops);
+			chunk_sort(rest.array, rest.size, s_flag.option_flag, &all_ops);
 			if(s_flag.option_flag == BENCH)
 				bench_print(rest.dis, ADA_MED_FULL, all_ops);
 		free(all_ops);

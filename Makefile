@@ -17,7 +17,10 @@ SRC = main.c\
 	  ft_op_to_zero.c\
 	  bench_print.c\
 	  radix_main.c\
-	  list_swap_ro_rero_pb_pa.c
+	  list_swap_ro_rero_pb_pa.c\
+	  list_rb_rrb.c\
+	  chunk_sort.c\
+	  ft_sqrt.c
 
 all:
 	$(CC) $(CFLAGS) $(SRC) -g -o $(NAME)
