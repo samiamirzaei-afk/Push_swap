@@ -2,7 +2,7 @@ NAME		= push_swap
 
 CC		= cc
 CFLAGS		= -Wall -Wextra -Werror
-CPPFLAGS	= -MMD -MP
+CPPFLAGS	= -Iinclude -MMD -MP
 LDFLAGS		=
 LDLIBS		=
 DEBUG		?= 0
