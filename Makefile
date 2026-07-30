@@ -27,7 +27,6 @@ SRCS		= $(SRC_DIR)/bench/bench.c \
 			  $(SRC_DIR)/bench/bench_format.c \
 			  $(SRC_DIR)/bench/bench_stats.c \
 			  $(SRC_DIR)/bench/bench_strategy.c \
-			  $(SRC_DIR)/checker.c \
 			  $(SRC_DIR)/ft_atoi.c \
 			  $(SRC_DIR)/gnl/get_next_line.c \
 			  $(SRC_DIR)/gnl/gnl_buffer.c \
@@ -53,18 +52,13 @@ SRCS		= $(SRC_DIR)/bench/bench.c \
 OBJS		= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 DEPS		= $(OBJS:.o=.d)
 
-BONUS_SRCS	= $(SRC_DIR)/bench/bench.c \
-			  $(SRC_DIR)/bench/bench_format.c \
-			  $(SRC_DIR)/bench/bench_stats.c \
-			  $(SRC_DIR)/bench/bench_strategy.c \
-			  $(SRC_DIR)/ft_atoi.c \
+BONUS_SRCS	= $(SRC_DIR)/ft_atoi.c \
 			  $(SRC_DIR)/list.c \
 			  $(SRC_DIR)/operations/operations.c \
 			  $(SRC_DIR)/operations/operations_basic.c \
 			  $(SRC_DIR)/operations/operations_reverse.c \
 			  $(SRC_DIR)/operations/operations_rotate.c \
 			  $(SRC_DIR)/parse.c \
-			  $(SRC_DIR)/sort_adaptive.c \
 			  $(SRC_DIR)/utils/strutils.c \
 			  $(SRC_DIR)/checker.c \
 			  $(SRC_DIR)/gnl/get_next_line.c \

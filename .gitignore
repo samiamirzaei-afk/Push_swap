@@ -67,3 +67,7 @@ checker
 checker_linux
 checker
 obj_bonus/
+
+# Local random push_swap checker helper
+push_swap_random_test.sh
+args.txt
