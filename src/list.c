@@ -6,7 +6,7 @@
 /*   By: sfurst <sfurst@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/07/16 21:45:44 by sfurst           #+#    #+#              */
-/*   Updated: 2026/07/16 22:15:22 by sfurst          ###   ########.fr        */
+/*   Updated: 2026/07/27 16:28:37 by sfurst          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void	assign_indexes(t_ps *ps)
 	}
 }
 
-/* Inversion ratio, kept on the linked-list representation. */
 t_f32	ft_disorder(t_stack *stack)
 {
 	t_node	*left;
