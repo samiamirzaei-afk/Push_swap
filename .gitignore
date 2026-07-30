@@ -64,3 +64,6 @@ codexion_tsan
 local_tests/
 tests/
 checker
+checker_linux
+checker
+obj_bonus/
