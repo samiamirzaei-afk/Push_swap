@@ -6,7 +6,7 @@
 /*   By: sfurst <sfurst@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/07/27 16:27:26 by sfurst           #+#    #+#              */
-/*   Updated: 2026/07/27 16:27:27 by sfurst          ###   ########.fr        */
+/*   Updated: 2026/07/31 22:13:48 by sfurst          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void				back_search(t_ps *ps, t_i32 biggest);
 void				chuck_end(t_ps *ps);
 void				five_sort(t_ps *ps);
 void				front_search(t_ps *ps, t_i32 biggest);
-void				ft_2bubble(t_ps *ps, t_i32 position);
+void				ft_2bubble(t_ps *ps, t_i32 smallest, t_i32 small_i);
 t_i32				ft_list_big(t_stack *stack, t_i32 *big_i);
 void				ft_next_push(t_ps *ps, t_i32 big_i, t_i32 biggest);
 t_i32				ft_small(t_stack *stack, t_i32 *small_i);

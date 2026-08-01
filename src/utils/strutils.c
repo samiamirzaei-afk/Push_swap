@@ -6,12 +6,12 @@
 /*   By: sfurst <sfurst@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/07/16 21:54:40 by sfurst           #+#    #+#              */
-/*   Updated: 2026/07/27 16:31:07 by sfurst          ###   ########.fr        */
+/*   Updated: 2026/07/31 22:16:02 by sfurst          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/strutils.h"
-#include "qol.h"
+#include "../../include/qol.h"
+#include "../../include/strutils.h"
 
 t_i64	ft_strlen(const char *str)
 {

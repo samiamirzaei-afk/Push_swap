@@ -6,7 +6,7 @@
 /*   By: sfurst <sfurst@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/07/30 17:50:18 by sfurst           #+#    #+#              */
-/*   Updated: 2026/07/30 17:50:28 by sfurst          ###   ########.fr        */
+/*   Updated: 2026/07/31 22:15:00 by sfurst          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	five_sort(t_ps *ps)
 		{
 			smallest = ft_small(&ps->a, &small_i);
 			if (ps->a.top->value != smallest)
-				ft_2bubble(ps, small_i);
+				ft_2bubble(ps, smallest, small_i);
 		}
 	}
 	if (ps->a.size == 3)

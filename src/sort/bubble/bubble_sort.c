@@ -6,7 +6,7 @@
 /*   By: sfurst <sfurst@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/07/30 17:56:53 by sfurst           #+#    #+#              */
-/*   Updated: 2026/07/30 17:56:55 by sfurst          ###   ########.fr        */
+/*   Updated: 2026/08/01 18:42:33 by sfurst          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,57 +35,41 @@ t_i32	ft_small(t_stack *stack, t_i32 *small_i)
 	return (smallest);
 }
 
-void	ft_2bubble(t_ps *ps, t_i32 position)
+void	ft_2bubble(t_ps *ps, t_i32 smallest, t_i32 small_i)
 {
-	if (position <= ps->a.size / 2)
+	if (ps->a.top->value != smallest)
 	{
-		while (position-- > 0)
+		if (small_i <= ps->a.size / 2)
 			op_ra(ps);
-	}
-	else
-	{
-		position = ps->a.size - position;
-		while (position-- > 0)
+		else
 			op_rra(ps);
 	}
 }
 
-void	ft_bubble(t_ps *ps)
+void	bubble_sort(t_ps *ps)
 {
 	t_i32	small_i;
 	t_i32	smallest;
 
-	while (ps->a.size)
+	if (ps->a.size <= 5)
+	{
+		five_sort(ps);
+		return ;
+	}
+	while (1)
 	{
 		smallest = ft_small(&ps->a, &small_i);
 		if (ps->a.size >= 2 && ps->a.top->value > ps->a.top->next->value)
 			op_sa(ps);
 		if (ps->a.top->value == smallest)
 			op_pb(ps);
-		if (!ps->a.size)
+		if (ps->a.size == 0)
 			break ;
 		smallest = ft_small(&ps->a, &small_i);
-		if (ps->a.top->value != smallest)
-			ft_2bubble(ps, small_i);
+		ft_2bubble(ps, smallest, small_i);
 		if (is_sorted(&ps->a))
 			break ;
 	}
-}
-
-void	bubble_main(t_ps *ps)
-{
-	if (ps->a.size <= 5)
-		five_sort(ps);
-	else
-	{
-		ft_bubble(ps);
-		while (ps->b.size)
-			op_pa(ps);
-	}
-}
-
-void	bubble_sort(t_ps *ps)
-{
-	if (ps->a.size > 1)
-		bubble_main(ps);
+	while (ps->b.size)
+		op_pa(ps);
 }

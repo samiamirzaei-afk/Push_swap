@@ -6,7 +6,7 @@
 /*   By: sfurst <sfurst@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/07/30 17:48:01 by sfurst           #+#    #+#              */
-/*   Updated: 2026/07/30 17:48:02 by sfurst          ###   ########.fr        */
+/*   Updated: 2026/08/01 18:42:15 by sfurst          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	radix_main(t_ps *ps)
 {
 	if (ps->a.size <= 5)
 	{
-		bubble_sort(ps);
+		five_sort(ps);
 		return ;
 	}
 	radix_indexer(&ps->a);

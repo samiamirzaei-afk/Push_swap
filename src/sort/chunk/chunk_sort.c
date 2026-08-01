@@ -6,7 +6,7 @@
 /*   By: sfurst <sfurst@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/07/30 17:49:38 by sfurst           #+#    #+#              */
-/*   Updated: 2026/07/30 17:49:41 by sfurst          ###   ########.fr        */
+/*   Updated: 2026/08/01 18:42:01 by sfurst          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	chunk_sort(t_ps *ps)
 
 	if (ps->a.size <= 5)
 	{
-		bubble_sort(ps);
+		five_sort(ps);
 		return ;
 	}
 	size = ps->a.size;
