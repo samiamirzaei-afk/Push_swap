@@ -121,7 +121,7 @@ The checker reads operations from standard input and prints `OK` when stack A is
 
 ## Collaboration
 
-Samy originally started the project without a teammate, so Veya joined him for a retry. This resulted in a slightly unusual workflow. Samy kept working on his existing branch, where he implemented the sorting algorithms and the main functionality. Veya reorganized the general structure, ported Samy's code into the cleaner structure, optimized the benchmark output to use a single `write` call, and added the bonus checker.
+Samy originally started the project without a reliable teammate, so Veya joined him for a retry. This resulted in a slightly unusual workflow. Samy kept working on his existing branch, where he implemented the sorting algorithms and the main functionality. Veya reorganized the general structure, ported Samy's code into the cleaner structure, optimized the benchmark output to use a single `write` call, and added the bonus checker.
 
 The work was divided as follows:
 
@@ -139,7 +139,7 @@ The work was divided as follows:
 * Implementing the bonus checker
 * Merging the code into the final structure
 
-The final version was reviewed together. Samy's original code was kept as close to its initial form as reasonably possible, and both contributors made sure they understood the complete project. Since this was Samy's retry, the exploratory parts of the project were left to him wherever possible so that he could learn from the process.
+The final version was reviewed together. Samy's original code was kept as close to its initial form as reasonably possible, and both contributors made sure they understood the complete project. Since this was Veyas's retry, the exploratory parts of the project were left to Samy wherever possible so that he could learn from the process.
 
 ## Resources
 
